@@ -2,6 +2,7 @@ import React from "react";
 import exampleImage from "./images/Frame 5172.png";
 import exampleImage2 from "./images/Frame 5182.png";
 import exampleImage3 from "./images/Group 3178.png";
+import "./style.css"
 
 const SpemaiChatSdk = () => {
   const text = "Hello from MyComponent!";
