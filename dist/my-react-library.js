@@ -8,20 +8,68 @@ var img = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAA
 
 var SpemaiChatSdk = function SpemaiChatSdk() {
   var text = "Hello from MyComponent!";
+
+  // Define CSS styles as JavaScript objects
+  var styles = {
+    chatPopup: {
+      position: "fixed",
+      bottom: "20px",
+      right: "50px",
+      zIndex: "999"
+      // Add other styles as needed
+    },
+
+    iconSet: {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center"
+      // Add other styles as needed
+    },
+
+    chatIcon: {
+      width: "130px",
+      height: "64px",
+      cursor: "pointer"
+      // Add other styles as needed
+    },
+
+    chatCloseIcon: {
+      width: "74px",
+      height: "74px",
+      cursor: "pointer"
+      // Add other styles as needed
+    },
+
+    chatWindow: {
+      position: "absolute",
+      bottom: "80px",
+      right: "0",
+      width: "25vw",
+      height: "70vh",
+      flexShrink: "0",
+      margin: "0 auto",
+      borderRadius: "30px",
+      background: "#fff",
+      boxShadow: "0px 4px 14px 0px rgba(0, 0, 0, 0.15)",
+      overflow: "hidden"
+      // Add other styles as needed
+    }
+  };
+
   return /*#__PURE__*/React.createElement("div", {
-    className: "chat-popup"
+    style: styles.chatPopup
   }, /*#__PURE__*/React.createElement("div", {
-    className: "icon-set"
+    style: styles.iconSet
   }, /*#__PURE__*/React.createElement("img", {
-    className: "chat-icon",
+    style: styles.chatIcon,
     src: img$1,
     alt: "Example"
   }), /*#__PURE__*/React.createElement("img", {
-    className: "chat-close-icon",
+    style: styles.chatCloseIcon,
     src: img,
     alt: "Example"
   })), /*#__PURE__*/React.createElement("div", {
-    className: "chat-window"
+    style: styles.chatWindow
   }, text));
 };
 
