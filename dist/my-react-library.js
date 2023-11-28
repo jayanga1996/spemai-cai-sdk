@@ -116,7 +116,8 @@ var MessageList = function MessageList(_ref) {
       lineHeight: '20px',
       letterSpacing: '-0.3px',
       padding: '5px',
-      left: 0
+      left: 0,
+      textAlign: 'left'
     },
     rightDiv: {
       display: 'flex',
@@ -138,7 +139,8 @@ var MessageList = function MessageList(_ref) {
       lineHeight: '20px',
       letterSpacing: '-0.3px',
       padding: '5px',
-      alignItems: 'end'
+      alignItems: 'end',
+      textAlign: 'left'
     },
     messageTimeText: {
       color: '#555',

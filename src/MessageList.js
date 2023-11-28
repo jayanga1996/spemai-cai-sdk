@@ -45,6 +45,7 @@ const MessageList = ({ messages, currentUser }) => {
       letterSpacing: '-0.3px',
       padding: '5px',
       left: 0,
+      textAlign:'left',
     },
     rightDiv: {
       display: 'flex',
@@ -67,6 +68,7 @@ const MessageList = ({ messages, currentUser }) => {
       letterSpacing: '-0.3px',
       padding: '5px',
       alignItems: 'end',
+      textAlign:'left',
     },
     messageTimeText: {
       color: '#555',
