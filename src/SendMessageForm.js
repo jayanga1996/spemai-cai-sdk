@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import send from ".image/Frame 5172.png";
+import send from "./image/Frame 5172.png";
 
 const SendMessageForm = ({ sendMessage }) => {
   const sendMessageFormStyles = {
