@@ -3,6 +3,7 @@ import exampleImage from "./images/Frame 5172.png";
 import exampleImage2 from "./images/Frame 5182.png";
 import exampleImage3 from "./images/Group 3178.png";
 import "./style.css";
+import ChatContainer from "./ChatContainer";
 
 const SpemaiChatSdk = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -67,7 +68,10 @@ const SpemaiChatSdk = () => {
     isOpen && React.createElement(
       "div",
       { style: styles.chatWindow },
-      text
+      React.createElement(
+        ChatContainer,
+        null,
+      )
     )
   );
 };
