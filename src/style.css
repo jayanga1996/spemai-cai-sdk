@@ -4,4 +4,52 @@
     padding: 10px;
     border-radius: 5px;
   }
+  .chat-popup {
+    position: fixed;
+    bottom: 20px;
+    right: 50px;
+    z-index: 999;
+  }
+  .icon-set{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .chat-icon {
+    width: 130px;
+  height: 64px;
+    cursor: pointer;
+  }
+  .chat-close-icon{
+  width: 74px;
+  height: 74px;
+  cursor: pointer;
+  }
+  
+  .chat-window {
+    position: absolute;
+    bottom: 80px;
+    right: 0;
+    width: 25vw;
+    height: 70vh;
+    flex-shrink: 0;
+    margin: 0 auto;
+    border-radius: 30px;
+    background: #fff;
+    box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+  }
+  
+  .close-icon {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: none;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 5px;
+  }
+  
   

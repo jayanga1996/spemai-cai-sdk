@@ -4,6 +4,8 @@ const resolve = require('@rollup/plugin-node-resolve');
 const commonjs = require('@rollup/plugin-commonjs');
 const postcss  = require('rollup-plugin-postcss');
 const image  = require('@rollup/plugin-image');
+const url = require('@rollup/plugin-url');
+const svgr = require('@svgr/rollup');
 
 module.exports = {
   input: 'src/index.js',
@@ -27,6 +29,8 @@ module.exports = {
       minimize: true, // Minify the CSS
     }),
     image(),
+    url(),   // Handle other file types like SVGs
+    svgr(),  // Handle SVG imports as React components
   ],
   external: ['react', 'react-dom'], // Marking React and React-DOM as external dependencies
 };
