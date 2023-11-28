@@ -13,13 +13,11 @@ var SpemaiChatSdk = function SpemaiChatSdk() {
   }, /*#__PURE__*/React.createElement("div", {
     className: "icon-set"
   }, /*#__PURE__*/React.createElement("img", {
-    className: "chat-icon"
-  }, {
+    className: "chat-icon",
     src: img$1,
     alt: "Example"
   }), /*#__PURE__*/React.createElement("img", {
-    className: "chat-close-icon"
-  }, {
+    className: "chat-close-icon",
     src: img,
     alt: "Example"
   })), /*#__PURE__*/React.createElement("div", {
