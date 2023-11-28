@@ -3,6 +3,7 @@ const babel = require('@rollup/plugin-babel');
 const resolve = require('@rollup/plugin-node-resolve');
 const commonjs = require('@rollup/plugin-commonjs');
 const postcss  = require('rollup-plugin-postcss');
+const image  = require('@rollup/plugin-image');
 
 module.exports = {
   input: 'src/index.js',
@@ -25,6 +26,7 @@ module.exports = {
       autoModules: true, // Automatically generate class names (if using CSS modules)
       minimize: true, // Minify the CSS
     }),
+    image(),
   ],
   external: ['react', 'react-dom'], // Marking React and React-DOM as external dependencies
 };
