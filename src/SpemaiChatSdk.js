@@ -14,13 +14,11 @@ const SpemaiChatSdk = () => {
       { className: "icon-set" },
       React.createElement(
         "img",
-        { className: "chat-icon" },
-        { src: exampleImage2, alt: "Example" }
+        { className: "chat-icon", src: exampleImage2, alt: "Example" }
       ),
       React.createElement(
         "img",
-        { className: "chat-close-icon" },
-        { src: exampleImage3, alt: "Example" }
+        { className: "chat-close-icon", src: exampleImage3, alt: "Example" }
       )
     ),
     React.createElement(
