@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-
+import MessageList from "./MessageList";
+import SendMessageForm from "./SendMessageForm";
 
 import full_exit from "./images/fullscreen-exit-fill.png";
 import arrow_left from "./images/arrow-left-s-line.png";
@@ -87,16 +88,16 @@ const ChatContainer = () => {
       ),
       React.createElement('img', { src: full_exit, width: 24, height: 24 })
     ),
-    // React.createElement(
-    //   'div',
-    //   { style: chatContainerStyles.chatContainerBody },
-    //   React.createElement(MessageList, { messages: messages, currentUser: currentUser })
-    // ),
-    // React.createElement(
-    //   'div',
-    //   { style: chatContainerStyles.chatContainerFooter },
-    //   React.createElement(SendMessageForm, { sendMessage: sendMessage })
-    // )
+    React.createElement(
+      'div',
+      { style: chatContainerStyles.chatContainerBody },
+      React.createElement(MessageList, { messages: messages, currentUser: currentUser })
+    ),
+    React.createElement(
+      'div',
+      { style: chatContainerStyles.chatContainerFooter },
+      React.createElement(SendMessageForm, { sendMessage: sendMessage })
+    )
   );
   
 };
