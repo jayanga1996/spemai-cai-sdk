@@ -19,9 +19,11 @@ const SendMessageForm = ({ sendMessage }) => {
       width: '80%',
       background: '#F4F4F4',
       border: 'none',
+      outline: 'none',
     },
     button: {
       border: 'none',
+      outline: 'none',
       background: '#F4F4F4',
       cursor: 'pointer',
     },
@@ -45,6 +47,7 @@ const SendMessageForm = ({ sendMessage }) => {
     'form',
     { style:sendMessageFormStyles.sendMessageForm, onSubmit: handleSubmit },
     React.createElement('input', {
+      style:sendMessageFormStyles.inputText,
       type: 'text',
       placeholder: 'Type a message...',
       value: message,
@@ -52,7 +55,7 @@ const SendMessageForm = ({ sendMessage }) => {
     }),
     React.createElement(
       'button',
-      { type: 'submit' },
+      { type: 'submit',style:sendMessageFormStyles.button },
       React.createElement('img', { src: send, width: 31, height: 31 }) 
     )
   );

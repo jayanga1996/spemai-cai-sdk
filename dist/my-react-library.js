@@ -188,10 +188,12 @@ var SendMessageForm = function SendMessageForm(_ref) {
     inputText: {
       width: '80%',
       background: '#F4F4F4',
-      border: 'none'
+      border: 'none',
+      outline: 'none'
     },
     button: {
       border: 'none',
+      outline: 'none',
       background: '#F4F4F4',
       cursor: 'pointer'
     }
@@ -216,6 +218,7 @@ var SendMessageForm = function SendMessageForm(_ref) {
     style: sendMessageFormStyles.sendMessageForm,
     onSubmit: handleSubmit
   }, /*#__PURE__*/React.createElement('input', {
+    style: sendMessageFormStyles.inputText,
     type: 'text',
     placeholder: 'Type a message...',
     value: message,
@@ -223,7 +226,8 @@ var SendMessageForm = function SendMessageForm(_ref) {
       return setMessage(e.target.value);
     }
   }), /*#__PURE__*/React.createElement('button', {
-    type: 'submit'
+    type: 'submit',
+    style: sendMessageFormStyles.button
   }, /*#__PURE__*/React.createElement('img', {
     src: img$4,
     width: 31,
