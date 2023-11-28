@@ -2,6 +2,7 @@
 const babel = require('@rollup/plugin-babel');
 const resolve = require('@rollup/plugin-node-resolve');
 const commonjs = require('@rollup/plugin-commonjs');
+const postcss  = require('rollup-plugin-postcss');
 
 module.exports = {
   input: 'src/index.js',
@@ -17,6 +18,12 @@ module.exports = {
       babelHelpers: 'bundled', // specify the type of babel helpers
       exclude: 'node_modules/**',
       presets: ['@babel/preset-env', '@babel/preset-react'],
+    }),
+    postcss({ // Add postcss plugin
+      extract: true,
+      modules: true, // Enable CSS modules (if needed)
+      autoModules: true, // Automatically generate class names (if using CSS modules)
+      minimize: true, // Minify the CSS
     }),
   ],
   external: ['react', 'react-dom'], // Marking React and React-DOM as external dependencies
