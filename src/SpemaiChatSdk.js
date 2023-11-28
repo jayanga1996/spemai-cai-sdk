@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import exampleImage from "./images/Frame 5172.png";
 import exampleImage2 from "./images/Frame 5182.png";
 import exampleImage3 from "./images/Group 3178.png";
 import "./style.css";
 
 const SpemaiChatSdk = () => {
+  const [isOpen, setIsOpen] = useState(false);
   const text = "Hello from MyComponent!";
+
+  const toggleChat = () => {
+    setIsOpen(!isOpen);
+  };
 
   // Define CSS styles as JavaScript objects
   const styles = {
@@ -56,10 +61,10 @@ const SpemaiChatSdk = () => {
     React.createElement(
       "div",
       { style: styles.iconSet },
-      React.createElement("img", { style: styles.chatIcon, src: exampleImage2, alt: "Example" }),
-      React.createElement("img", { style: styles.chatCloseIcon, src: exampleImage3, alt: "Example" })
+      !isOpen && React.createElement("img", { style: styles.chatIcon, src: exampleImage2, alt: "Example",onClick: () => toggleChat() }),
+      isOpen && React.createElement("img", { style: styles.chatCloseIcon, src: exampleImage3, alt: "Example",onClick: () => toggleChat()  })
     ),
-    React.createElement(
+    isOpen && React.createElement(
       "div",
       { style: styles.chatWindow },
       text
