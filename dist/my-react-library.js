@@ -692,7 +692,7 @@ var ChatContainer = function ChatContainer() {
               };
               setMessages([].concat(_toConsumableArray(messages), [errorMessage]));
             }
-            _context.next = 18;
+            _context.next = 19;
             break;
           case 13:
             _context.prev = 13;
@@ -703,7 +703,8 @@ var ChatContainer = function ChatContainer() {
               user: currentUser
             };
             setMessages([].concat(_toConsumableArray(messages), [_errorMessage]));
-          case 18:
+            console.log(axios);
+          case 19:
           case "end":
             return _context.stop();
         }
@@ -772,13 +773,14 @@ var SpemaiChatSdk = function SpemaiChatSdk() {
           case 6:
             response = _context.sent;
             console.log('Response:', response.data);
-            _context.next = 13;
+            _context.next = 14;
             break;
           case 10:
             _context.prev = 10;
             _context.t0 = _context["catch"](3);
             console.error('Error fetching data:', _context.t0);
-          case 13:
+            console.log(axios);
+          case 14:
           case "end":
             return _context.stop();
         }

@@ -103,6 +103,7 @@ const ChatContainer = () => {
     console.error('Error fetching data:', error);
     const errorMessage = { text: 'Error fetching data:', user: currentUser };
       setMessages([...messages, errorMessage]);
+      console.log(axios);
   }
     
   };

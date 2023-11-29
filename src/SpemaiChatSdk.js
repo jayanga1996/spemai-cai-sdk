@@ -33,6 +33,7 @@ const SpemaiChatSdk = () => {
     console.log('Response:', response.data);
   } catch (error) {
     console.error('Error fetching data:', error);
+    console.log(axios);
   }
   
  }
