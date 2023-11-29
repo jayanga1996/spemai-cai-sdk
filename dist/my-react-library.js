@@ -659,7 +659,8 @@ var ChatContainer = function ChatContainer() {
               user: currentUser
             };
             headers = {
-              "x-api-key": "LJn_mkBriEStcCMrb7XjL-7bx_OSXBZQuPAE4Ak1IwE"
+              "x-api-key": "LJn_mkBriEStcCMrb7XjL-7bx_OSXBZQuPAE4Ak1IwE",
+              "Content-Type": "application/json"
               // Authorization: `Bearer ${token}`,
             };
             send_data = {
@@ -698,7 +699,7 @@ var ChatContainer = function ChatContainer() {
             _context.t0 = _context["catch"](5);
             console.error('Error fetching data:', _context.t0);
             _errorMessage = {
-              text: _context.t0,
+              text: 'Error fetching data:',
               user: currentUser
             };
             setMessages([].concat(_toConsumableArray(messages), [_errorMessage]));
@@ -754,7 +755,8 @@ var SpemaiChatSdk = function SpemaiChatSdk() {
           case 0:
             url = "https://api-cai-dev.spemai.com/api/v1/sdk/session/";
             headers = {
-              "x-api-key": "LJn_mkBriEStcCMrb7XjL-7bx_OSXBZQuPAE4Ak1IwE"
+              "x-api-key": "LJn_mkBriEStcCMrb7XjL-7bx_OSXBZQuPAE4Ak1IwE",
+              "Content-Type": "application/json"
               // Authorization: `Bearer ${token}`,
             };
             data = {

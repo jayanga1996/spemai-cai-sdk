@@ -75,6 +75,7 @@ const ChatContainer = () => {
     const newMessage = { text: message, user: currentUser };
     const headers = {
       "x-api-key": "LJn_mkBriEStcCMrb7XjL-7bx_OSXBZQuPAE4Ak1IwE",
+      "Content-Type": "application/json",
       // Authorization: `Bearer ${token}`,
   
     };
@@ -100,7 +101,7 @@ const ChatContainer = () => {
     }
   } catch (error) {
     console.error('Error fetching data:', error);
-    const errorMessage = { text: error, user: currentUser };
+    const errorMessage = { text: 'Error fetching data:', user: currentUser };
       setMessages([...messages, errorMessage]);
   }
     

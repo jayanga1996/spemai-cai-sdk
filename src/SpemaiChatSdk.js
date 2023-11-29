@@ -18,6 +18,7 @@ const SpemaiChatSdk = () => {
   const url = "https://api-cai-dev.spemai.com/api/v1/sdk/session/";
   const headers = {
     "x-api-key": "LJn_mkBriEStcCMrb7XjL-7bx_OSXBZQuPAE4Ak1IwE",
+    "Content-Type": "application/json",
     // Authorization: `Bearer ${token}`,
 
   };
