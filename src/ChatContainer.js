@@ -88,7 +88,7 @@ const ChatContainer = () => {
     // Simulated API call or WebSocket to send the message
    
   try {
-    const response = await axios.post(url, data, { headers });
+    const response = await axios.post(url, send_data, { headers });
     console.log('Response:', response.data);
     if(response.status === 100){
       const responseMessage = { text: response.data.response_msg, user: "OtherUser" };

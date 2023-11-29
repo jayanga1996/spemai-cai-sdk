@@ -649,7 +649,7 @@ var ChatContainer = function ChatContainer() {
   }, []);
   var sendMessage = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(message) {
-      var url, newMessage, headers, response, responseMessage;
+      var url, newMessage, headers, send_data, response, responseMessage;
       return _regeneratorRuntime().wrap(function _callee$(_context) {
         while (1) switch (_context.prev = _context.next) {
           case 0:
@@ -662,11 +662,17 @@ var ChatContainer = function ChatContainer() {
               "x-api-key": "LJn_mkBriEStcCMrb7XjL-7bx_OSXBZQuPAE4Ak1IwE"
               // Authorization: `Bearer ${token}`,
             };
+            send_data = {
+              "chat_id": "418285f6-7043-455e-a9e9-ef0e04ea3bfb",
+              "agent_id": "c07586718d5a4cafb6801836576ebed0",
+              "client_id": 1,
+              "message": newMessage
+            };
             setMessages([].concat(_toConsumableArray(messages), [newMessage]));
             // Simulated API call or WebSocket to send the message
             _context.prev = 5;
             _context.next = 8;
-            return axios.post(url, data, {
+            return axios.post(url, send_data, {
               headers: headers
             });
           case 8:
