@@ -8,9 +8,7 @@ import arrow_left from "./images/arrow-left-s-line.png";
  import axios from 'axios';
 
 const ChatContainer = () => {
-  const chat_sdk_baseurl = axios.create({
-    baseURL: "https://api-cai-dev.spemai.com/",
-  });
+
   
   const [messages, setMessages] = useState([]);
   const currentUser = "User123"; // Simulated current user

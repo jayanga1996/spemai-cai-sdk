@@ -7,9 +7,7 @@ import ChatContainer from "./ChatContainer";
  import axios from 'axios';
 
 const SpemaiChatSdk = () => {
-  // const chat_sdk_baseurl = axios.create({
-  //   baseURL: "https://api-cai-dev.spemai.com/",
-  // });
+
   const [isOpen, setIsOpen] = useState(false);
   const text = "Hello from MyComponent!";
 
