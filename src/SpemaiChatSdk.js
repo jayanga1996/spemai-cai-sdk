@@ -29,16 +29,12 @@ const SpemaiChatSdk = () => {
     "agent_id":"cedfb2be-e8c8-43c7-89e8-6f730482749b"
 }
   // Simulated API call or WebSocket to send the message
-  axios.post(url, data, { headers })
-  .then(response => {
+  try {
+    const response = await axios.post(url, data, { headers });
     console.log('Response:', response.data);
-    // if(response.status === 100){
-    //   console.log("Responce data :".response.data)
-    // }
-  })
-  .catch(error => {
+  } catch (error) {
     console.error('Error fetching data:', error);
-  });
+  }
   
  }
   useEffect(()=>{

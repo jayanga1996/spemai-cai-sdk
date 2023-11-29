@@ -652,7 +652,7 @@ var ChatContainer = function ChatContainer() {
   }, []);
   var sendMessage = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(message) {
-      var url, newMessage, headers, send_data;
+      var url, newMessage, headers, response, responseMessage;
       return _regeneratorRuntime().wrap(function _callee$(_context) {
         while (1) switch (_context.prev = _context.next) {
           case 0:
@@ -665,33 +665,34 @@ var ChatContainer = function ChatContainer() {
               "x-api-key": "LJn_mkBriEStcCMrb7XjL-7bx_OSXBZQuPAE4Ak1IwE"
               // Authorization: `Bearer ${token}`,
             };
-            send_data = {
-              "chat_id": "418285f6-7043-455e-a9e9-ef0e04ea3bfb",
-              "agent_id": "c07586718d5a4cafb6801836576ebed0",
-              "client_id": 1,
-              "message": newMessage
-            };
             setMessages([].concat(_toConsumableArray(messages), [newMessage]));
             // Simulated API call or WebSocket to send the message
-            axios.post(url, send_data, {
+            _context.prev = 5;
+            _context.next = 8;
+            return axios.post(url, data, {
               headers: headers
-            }).then(function (response) {
-              console.log('Response:', response.data);
-              if (response.status === 100) {
-                var responseMessage = {
-                  text: response.data.response_msg,
-                  user: "OtherUser"
-                };
-                setMessages([].concat(_toConsumableArray(messages), [responseMessage]));
-              }
-            })["catch"](function (error) {
-              console.error('Error fetching data:', error);
             });
-          case 6:
+          case 8:
+            response = _context.sent;
+            console.log('Response:', response.data);
+            if (response.status === 100) {
+              responseMessage = {
+                text: response.data.response_msg,
+                user: "OtherUser"
+              };
+              setMessages([].concat(_toConsumableArray(messages), [responseMessage]));
+            }
+            _context.next = 16;
+            break;
+          case 13:
+            _context.prev = 13;
+            _context.t0 = _context["catch"](5);
+            console.error('Error fetching data:', _context.t0);
+          case 16:
           case "end":
             return _context.stop();
         }
-      }, _callee);
+      }, _callee, null, [[5, 13]]);
     }));
     return function sendMessage(_x) {
       return _ref.apply(this, arguments);
@@ -736,7 +737,7 @@ var SpemaiChatSdk = function SpemaiChatSdk() {
   };
   var createChatSession = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-      var url, headers, data;
+      var url, headers, data, response;
       return _regeneratorRuntime().wrap(function _callee$(_context) {
         while (1) switch (_context.prev = _context.next) {
           case 0:
@@ -750,21 +751,25 @@ var SpemaiChatSdk = function SpemaiChatSdk() {
               "client_name": "Dinal Fernando",
               "agent_id": "cedfb2be-e8c8-43c7-89e8-6f730482749b"
             }; // Simulated API call or WebSocket to send the message
-            axios.post(url, data, {
+            _context.prev = 3;
+            _context.next = 6;
+            return axios.post(url, data, {
               headers: headers
-            }).then(function (response) {
-              console.log('Response:', response.data);
-              // if(response.status === 100){
-              //   console.log("Responce data :".response.data)
-              // }
-            })["catch"](function (error) {
-              console.error('Error fetching data:', error);
             });
-          case 4:
+          case 6:
+            response = _context.sent;
+            console.log('Response:', response.data);
+            _context.next = 13;
+            break;
+          case 10:
+            _context.prev = 10;
+            _context.t0 = _context["catch"](3);
+            console.error('Error fetching data:', _context.t0);
+          case 13:
           case "end":
             return _context.stop();
         }
-      }, _callee);
+      }, _callee, null, [[3, 10]]);
     }));
     return function createChatSession() {
       return _ref.apply(this, arguments);
