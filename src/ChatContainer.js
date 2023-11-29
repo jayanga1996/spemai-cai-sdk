@@ -28,12 +28,12 @@ const ChatContainer = () => {
     chatContainerBody: {
       padding: '20px',
       overflowY: 'scroll',
-      height: '45vh',
+      height: '50vh',
     },
     chatContainerFooter: {
       borderTop: '1px solid #F0F0F0',
       padding: '20px',
-      height: '14vh',
+      height: '10vh',
     },
     chatTopicText: {
       color: '#000',
