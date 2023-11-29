@@ -20,7 +20,7 @@ const ChatContainer = () => {
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
-      height: '15vh',
+      height: '9vh',
       width: '100%',
       borderBottom: '1px solid #F0F0F0',
       padding: '20px',
@@ -28,12 +28,12 @@ const ChatContainer = () => {
     chatContainerBody: {
       padding: '20px',
       overflowY: 'scroll',
-      height: '65vh',
+      height: '45vh',
     },
     chatContainerFooter: {
       borderTop: '1px solid #F0F0F0',
       padding: '20px',
-      height: '20vh',
+      height: '14vh',
     },
     chatTopicText: {
       color: '#000',
