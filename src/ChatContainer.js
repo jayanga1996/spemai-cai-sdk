@@ -73,8 +73,7 @@ const ChatContainer = () => {
   }, []);
 
   const sendMessage = async(message) => {
-    const url = "api/v1/sdk/session/";
-    const method = "POST";
+    const url = "https://api-cai-dev.spemai.com/api/v1/sdk/session/";
     const newMessage = { text: message, user: currentUser };
     const headers = {
       "x-api-key": "LJn_mkBriEStcCMrb7XjL-7bx_OSXBZQuPAE4Ak1IwE",
@@ -89,16 +88,18 @@ const ChatContainer = () => {
   }
     setMessages([...messages, newMessage]);
     // Simulated API call or WebSocket to send the message
-    const response = await chat_sdk_baseurl.request({
-      url,
-      method,
-      send_data,
-      headers,
-    });
+    axios.post(url, send_data, { headers })
+  .then(response => {
+    console.log('Response:', response.data);
     if(response.status === 100){
       const responseMessage = { text: response.data.response_msg, user: "OtherUser" };
       setMessages([...messages, responseMessage]);
     }
+  })
+  .catch(error => {
+    console.error('Error fetching data:', error);
+  });
+    
   };
   
 

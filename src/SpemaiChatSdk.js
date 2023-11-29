@@ -7,9 +7,9 @@ import ChatContainer from "./ChatContainer";
  import axios from 'axios';
 
 const SpemaiChatSdk = () => {
-  const chat_sdk_baseurl = axios.create({
-    baseURL: "https://api-cai-dev.spemai.com/",
-  });
+  // const chat_sdk_baseurl = axios.create({
+  //   baseURL: "https://api-cai-dev.spemai.com/",
+  // });
   const [isOpen, setIsOpen] = useState(false);
   const text = "Hello from MyComponent!";
 
@@ -17,8 +17,7 @@ const SpemaiChatSdk = () => {
     setIsOpen(!isOpen);
   };
  const createChatSession = async()=>{
-  const url = "api/v1/sdk/session/";
-  const method = "POST";
+  const url = "https://api-cai-dev.spemai.com/api/v1/sdk/session/";
   const headers = {
     "x-api-key": "LJn_mkBriEStcCMrb7XjL-7bx_OSXBZQuPAE4Ak1IwE",
     // Authorization: `Bearer ${token}`,
@@ -30,15 +29,17 @@ const SpemaiChatSdk = () => {
     "agent_id":"cedfb2be-e8c8-43c7-89e8-6f730482749b"
 }
   // Simulated API call or WebSocket to send the message
-  const response = await chat_sdk_baseurl.request({
-    url,
-    method,
-    data,
-    headers,
+  axios.post(url, data, { headers })
+  .then(response => {
+    console.log('Response:', response.data);
+    // if(response.status === 100){
+    //   console.log("Responce data :".response.data)
+    // }
+  })
+  .catch(error => {
+    console.error('Error fetching data:', error);
   });
-  if(response.status === 100){
-    console.log("Responce data :".response.data)
-  }
+  
  }
   useEffect(()=>{
     createChatSession()
