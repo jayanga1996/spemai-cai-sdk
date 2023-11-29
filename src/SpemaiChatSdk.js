@@ -5,6 +5,10 @@ import exampleImage3 from "./images/Group 3178.png";
 import "./style.css";
 import ChatContainer from "./ChatContainer";
  import axios from 'axios';
+ const instance = axios.create({
+  baseURL: 'https://api-cai-dev.spemai.com', // Replace with your API base URL
+  // Other configurations
+});
 
 const SpemaiChatSdk = () => {
 
@@ -15,7 +19,7 @@ const SpemaiChatSdk = () => {
     setIsOpen(!isOpen);
   };
  const createChatSession = async()=>{
-  const url = "https://api-cai-dev.spemai.com/api/v1/sdk/session/";
+  const url = "/api/v1/sdk/session/";
   const headers = {
     "x-api-key": "LJn_mkBriEStcCMrb7XjL-7bx_OSXBZQuPAE4Ak1IwE",
     "Content-Type": "application/json",
@@ -29,7 +33,7 @@ const SpemaiChatSdk = () => {
 }
   // Simulated API call or WebSocket to send the message
   try {
-    const response = await axios.post(url, data, { headers });
+    const response = await instance.post(url, data, { headers });
     console.log('Response:', response.data);
   } catch (error) {
     console.error('Error fetching data:', error);

@@ -6,6 +6,10 @@ import full_exit from "./images/fullscreen-exit-fill.png";
 import arrow_left from "./images/arrow-left-s-line.png";
 
  import axios from 'axios';
+ const instance = axios.create({
+  baseURL: 'https://api-cai-dev.spemai.com', // Replace with your API base URL
+  // Other configurations
+});
 
 const ChatContainer = () => {
 
@@ -71,7 +75,7 @@ const ChatContainer = () => {
   }, []);
 
   const sendMessage = async(message) => {
-    const url = "https://api-cai-dev.spemai.com/api/v1/sdk/chat/";
+    const url = "/api/v1/sdk/chat/";
     const newMessage = { text: message, user: currentUser };
     const headers = {
       "x-api-key": "LJn_mkBriEStcCMrb7XjL-7bx_OSXBZQuPAE4Ak1IwE",
@@ -89,7 +93,7 @@ const ChatContainer = () => {
     // Simulated API call or WebSocket to send the message
    
   try {
-    const response = await axios.post(url, send_data, { headers });
+    const response = await instance.post(url, send_data, { headers });
     console.log('Response:', response.data);
     if(response.status === 100){
       const responseMessage = { text: response.data.response_msg, user: "OtherUser" };
