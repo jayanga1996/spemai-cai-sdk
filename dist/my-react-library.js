@@ -132,7 +132,7 @@ var MessageList = function MessageList(_ref) {
       flexShrink: 0,
       borderRadius: '0px 8px 8px 8px',
       background: '#178560',
-      color: '#252525',
+      color: '#FFFFFF',
       fontSize: '12px',
       fontStyle: 'normal',
       fontWeight: 400,
@@ -260,20 +260,20 @@ var ChatContainer = function ChatContainer() {
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
-      height: '4vh',
-      width: '90%',
+      height: '15vh',
+      width: '100%',
       borderBottom: '1px solid #F0F0F0',
       padding: '20px'
     },
     chatContainerBody: {
       padding: '20px',
       overflowY: 'scroll',
-      height: '40vh'
+      height: '65vh'
     },
     chatContainerFooter: {
       borderTop: '1px solid #F0F0F0',
       padding: '20px',
-      height: '4vh'
+      height: '20vh'
     },
     chatTopicText: {
       color: '#000',

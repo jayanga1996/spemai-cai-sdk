@@ -60,7 +60,7 @@ const MessageList = ({ messages, currentUser }) => {
       flexShrink: 0,
       borderRadius: '0px 8px 8px 8px',
       background: '#178560',
-      color: '#252525',
+      color: '#FFFFFF',
       fontSize: '12px',
       fontStyle: 'normal',
       fontWeight: 400,
