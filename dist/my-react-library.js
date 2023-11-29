@@ -698,7 +698,7 @@ var ChatContainer = function ChatContainer() {
             _context.t0 = _context["catch"](5);
             console.error('Error fetching data:', _context.t0);
             _errorMessage = {
-              text: "Error response api call",
+              text: _context.t0,
               user: currentUser
             };
             setMessages([].concat(_toConsumableArray(messages), [_errorMessage]));

@@ -100,7 +100,7 @@ const ChatContainer = () => {
     }
   } catch (error) {
     console.error('Error fetching data:', error);
-    const errorMessage = { text: "Error response api call", user: currentUser };
+    const errorMessage = { text: error, user: currentUser };
       setMessages([...messages, errorMessage]);
   }
     
