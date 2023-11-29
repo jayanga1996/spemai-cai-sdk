@@ -649,7 +649,7 @@ var ChatContainer = function ChatContainer() {
   }, []);
   var sendMessage = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(message) {
-      var url, newMessage, headers, send_data, response, responseMessage;
+      var url, newMessage, headers, send_data, response, responseMessage, errorMessage, _errorMessage;
       return _regeneratorRuntime().wrap(function _callee$(_context) {
         while (1) switch (_context.prev = _context.next) {
           case 0:
@@ -684,14 +684,25 @@ var ChatContainer = function ChatContainer() {
                 user: "OtherUser"
               };
               setMessages([].concat(_toConsumableArray(messages), [responseMessage]));
+            } else {
+              errorMessage = {
+                text: "Error response",
+                user: "OtherUser"
+              };
+              setMessages([].concat(_toConsumableArray(messages), [errorMessage]));
             }
-            _context.next = 16;
+            _context.next = 18;
             break;
           case 13:
             _context.prev = 13;
             _context.t0 = _context["catch"](5);
             console.error('Error fetching data:', _context.t0);
-          case 16:
+            _errorMessage = {
+              text: "Error response api call",
+              user: currentUser
+            };
+            setMessages([].concat(_toConsumableArray(messages), [_errorMessage]));
+          case 18:
           case "end":
             return _context.stop();
         }

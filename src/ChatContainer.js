@@ -93,9 +93,15 @@ const ChatContainer = () => {
     if(response.status === 100){
       const responseMessage = { text: response.data.response_msg, user: "OtherUser" };
       setMessages([...messages, responseMessage]);
+      
+    }else{
+      const errorMessage = { text: "Error response", user: "OtherUser" };
+      setMessages([...messages, errorMessage]);
     }
   } catch (error) {
     console.error('Error fetching data:', error);
+    const errorMessage = { text: "Error response api call", user: currentUser };
+      setMessages([...messages, errorMessage]);
   }
     
   };
