@@ -83,7 +83,7 @@ const ChatContainer = () => {
       "chat_id":"418285f6-7043-455e-a9e9-ef0e04ea3bfb",
       "agent_id":"c07586718d5a4cafb6801836576ebed0",
       "client_id":1,
-      "message":newMessage
+      "message":message
   }
     setMessages([...messages, newMessage]);
     // Simulated API call or WebSocket to send the message
