@@ -71,7 +71,7 @@ const ChatContainer = () => {
   }, []);
 
   const sendMessage = async(message) => {
-    const url = "https://api-cai-dev.spemai.com/api/v1/sdk/session/";
+    const url = "https://api-cai-dev.spemai.com/api/v1/sdk/chat/";
     const newMessage = { text: message, user: currentUser };
     const headers = {
       "x-api-key": "LJn_mkBriEStcCMrb7XjL-7bx_OSXBZQuPAE4Ak1IwE",
