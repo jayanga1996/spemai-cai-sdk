@@ -6,6 +6,8 @@ const postcss  = require('rollup-plugin-postcss');
 const image  = require('@rollup/plugin-image');
 const url = require('@rollup/plugin-url');
 const svgr = require('@svgr/rollup');
+const nodePolyfills = require('rollup-plugin-node-polyfills');
+const json = require( '@rollup/plugin-json');
 
 module.exports = {
   input: 'src/index.js',
@@ -31,6 +33,9 @@ module.exports = {
     image(),
     url(),   // Handle other file types like SVGs
     svgr(),  // Handle SVG imports as React components
+    nodePolyfills(),
+    json(),
+    
   ],
-  external: ['react', 'react-dom'], // Marking React and React-DOM as external dependencies
+  external: ['react', 'react-dom' ,'axios'], // Marking React and React-DOM as external dependencies
 };

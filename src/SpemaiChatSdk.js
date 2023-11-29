@@ -1,17 +1,48 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import exampleImage from "./images/Frame 5172.png";
 import exampleImage2 from "./images/Frame 5182.png";
 import exampleImage3 from "./images/Group 3178.png";
 import "./style.css";
 import ChatContainer from "./ChatContainer";
+ import axios from 'axios';
 
 const SpemaiChatSdk = () => {
+  const chat_sdk_baseurl = axios.create({
+    baseURL: "https://api-cai-dev.spemai.com/",
+  });
   const [isOpen, setIsOpen] = useState(false);
   const text = "Hello from MyComponent!";
 
   const toggleChat = () => {
     setIsOpen(!isOpen);
   };
+ const createChatSession = async()=>{
+  const url = "api/v1/sdk/session/";
+  const method = "POST";
+  const headers = {
+    "x-api-key": "LJn_mkBriEStcCMrb7XjL-7bx_OSXBZQuPAE4Ak1IwE",
+    // Authorization: `Bearer ${token}`,
+
+  };
+  const data ={
+    "client_id":1,
+    "client_name":"Dinal Fernando",
+    "agent_id":"cedfb2be-e8c8-43c7-89e8-6f730482749b"
+}
+  // Simulated API call or WebSocket to send the message
+  const response = await chat_sdk_baseurl.request({
+    url,
+    method,
+    data,
+    headers,
+  });
+  if(response.status === 100){
+    console.log("Responce data :".response.data)
+  }
+ }
+  useEffect(()=>{
+    createChatSession()
+  },[])
 
   // Define CSS styles as JavaScript objects
   const styles = {

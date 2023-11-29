@@ -5,7 +5,13 @@ import SendMessageForm from "./SendMessageForm";
 import full_exit from "./images/fullscreen-exit-fill.png";
 import arrow_left from "./images/arrow-left-s-line.png";
 
+ import axios from 'axios';
+
 const ChatContainer = () => {
+  const chat_sdk_baseurl = axios.create({
+    baseURL: "https://api-cai-dev.spemai.com/",
+  });
+  
   const [messages, setMessages] = useState([]);
   const currentUser = "User123"; // Simulated current user
   const chatContainerStyles = {
@@ -66,11 +72,29 @@ const ChatContainer = () => {
     setMessages(initialMessages);
   }, []);
 
-  const sendMessage = (message) => {
+  const sendMessage = async(message) => {
+    const url = "api/v1/sdk/session/";
+    const method = "POST";
     const newMessage = { text: message, user: currentUser };
+    const headers = {
+      "x-api-key": "LJn_mkBriEStcCMrb7XjL-7bx_OSXBZQuPAE4Ak1IwE",
+      // Authorization: `Bearer ${token}`,
+  
+    };
     setMessages([...messages, newMessage]);
     // Simulated API call or WebSocket to send the message
+    const response = await chat_sdk_baseurl.request({
+      url,
+      method,
+      newMessage,
+      headers,
+    });
+    if(response.status === 100){
+      const responseMessage = { text: response.data.response_msg, user: "OtherUser" };
+      setMessages([...messages, responseMessage]);
+    }
   };
+  
 
   return  React.createElement(
     'div',
