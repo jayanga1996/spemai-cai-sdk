@@ -693,11 +693,14 @@ var ChatContainer = function ChatContainer() {
             xhr.onreadystatechange = function () {
               if (xhr.readyState === XMLHttpRequest.DONE) {
                 if (xhr.status === 200) {
-                  console.log("Response status:", xhr.responseText.status);
-                  console.log("Response message:", xhr.responseText.data.response_msg);
-                  if (xhr.responseText.status === 100) {
+                  var _responseObj$data;
+                  var responseObj = JSON.parse(xhr.responseText); // Parse the JSON response
+                  var responseMsg = responseObj === null || responseObj === void 0 || (_responseObj$data = responseObj.data) === null || _responseObj$data === void 0 ? void 0 : _responseObj$data.response_msg;
+                  console.log("Response status:", responseObj.status);
+                  console.log("Response message:", responseMsg);
+                  if (responseObj.status === 100) {
                     var responseMessage = {
-                      text: xhr.responseText.data.response_msg,
+                      text: responseMsg,
                       user: "OtherUser"
                     };
                     setMessages([].concat(_toConsumableArray(messages), [responseMessage]));

@@ -121,11 +121,13 @@ const ChatContainer = () => {
     xhr.onreadystatechange = function () {
       if (xhr.readyState === XMLHttpRequest.DONE) {
         if (xhr.status === 200) {
-          console.log("Response status:", xhr.responseText.status);
-          console.log("Response message:", xhr.responseText.data.response_msg);
-          if (xhr.responseText.status === 100) {
+          const responseObj = JSON.parse(xhr.responseText); // Parse the JSON response
+        const responseMsg = responseObj?.data?.response_msg; 
+          console.log("Response status:", responseObj.status);
+          console.log("Response message:", responseMsg);
+          if (responseObj.status === 100) {
             const responseMessage = {
-              text: xhr.responseText.data.response_msg,
+              text: responseMsg,
               user: "OtherUser",
             };
             setMessages([...messages, responseMessage]);
