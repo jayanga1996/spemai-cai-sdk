@@ -1,7 +1,6 @@
 'use strict';
 
 var React = require('react');
-require('axios');
 
 function _iterableToArrayLimit(r, l) {
   var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"];
@@ -575,7 +574,8 @@ var img = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAA
 
 var ChatContainer = function ChatContainer(props) {
   var chatName = props.chatName,
-    apikey = props.apikey,
+    api_key = props.api_key,
+    agent_id = props.agent_id,
     sessionId = props.sessionId;
   var _useState = React.useState([]),
     _useState2 = _slicedToArray(_useState, 2),
@@ -701,7 +701,7 @@ var ChatContainer = function ChatContainer(props) {
             url = "https://api-cai-dev.spemai.com/api/v1/sdk/chat/";
             xhr.open("POST", url, true);
             xhr.setRequestHeader("Content-Type", "application/json");
-            xhr.setRequestHeader("x-api-key", apikey);
+            xhr.setRequestHeader("x-api-key", api_key);
             xhr.onreadystatechange = function () {
               if (xhr.readyState === XMLHttpRequest.DONE) {
                 if (xhr.status === 200) {
@@ -734,8 +734,8 @@ var ChatContainer = function ChatContainer(props) {
               }
             };
             send_data = JSON.stringify({
-              chat_id: "418285f6-7043-455e-a9e9-ef0e04ea3bfb",
-              agent_id: "c07586718d5a4cafb6801836576ebed0",
+              chat_id: sessionId,
+              agent_id: agent_id,
               client_id: 1,
               message: message
             });
@@ -936,6 +936,7 @@ var SpemaiChatSdk = function SpemaiChatSdk(props) {
   }, /*#__PURE__*/React.createElement(ChatContainer, {
     chatName: chatName,
     api_key: api_key,
+    agent_id: agent_id,
     sessionId: sessionId
   })));
 };

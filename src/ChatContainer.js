@@ -5,10 +5,9 @@ import SendMessageForm from "./SendMessageForm";
 import full_exit from "./images/fullscreen-exit-fill.png";
 import arrow_left from "./images/arrow-left-s-line.png";
 
-import axios from "axios";
 
 const ChatContainer = (props) => {
-  const { chatName,apikey,sessionId } = props;
+  const { chatName,api_key,agent_id,sessionId } = props;
   const [messages, setMessages] = useState([]);
   const currentUser = "User123"; // Simulated current user
   const chatContainerStyles = {
@@ -120,7 +119,7 @@ const ChatContainer = (props) => {
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.setRequestHeader(
       "x-api-key",
-      apikey
+      api_key
     );
 
     xhr.onreadystatechange = function () {
@@ -148,8 +147,8 @@ const ChatContainer = (props) => {
     };
 
     var send_data = JSON.stringify({
-      chat_id: "418285f6-7043-455e-a9e9-ef0e04ea3bfb",
-      agent_id: "c07586718d5a4cafb6801836576ebed0",
+      chat_id: sessionId,
+      agent_id: agent_id,
       client_id: 1,
       message: message,
     });

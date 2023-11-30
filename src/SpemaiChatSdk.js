@@ -4,7 +4,6 @@ import exampleImage2 from "./images/Frame 5182.png";
 import exampleImage3 from "./images/Group 3178.png";
 import "./style.css";
 import ChatContainer from "./ChatContainer";
- import axios from 'axios';
 
 const SpemaiChatSdk = (props) => {
   const { chatName,api_key,agent_id } = props;
@@ -141,7 +140,7 @@ const createChatSession = async () => {
       { style: styles.chatWindow },
       React.createElement(
         ChatContainer,
-        {chatName,api_key,sessionId},
+        {chatName,api_key,agent_id,sessionId},
       )
     )
   );
