@@ -918,7 +918,8 @@ var SpemaiChatSdk = function SpemaiChatSdk(props) {
 
 // MyComponent.js
 var MyComponent = function MyComponent(_ref) {
-  var chatName = _ref.chatName;
+  var chatName = _ref.chatName,
+    apikey = _ref.apikey;
   return /*#__PURE__*/React.createElement(SpemaiChatSdk, {
     chatName: chatName,
     apikey: apikey
