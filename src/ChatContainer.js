@@ -106,6 +106,8 @@ const ChatContainer = () => {
 
   // };
   const sendMessage = async (message) => {
+    const newMessage = { text: message, user: currentUser };
+    setMessages([...messages, newMessage]);
     var xhr = new XMLHttpRequest();
     var url = "https://api-cai-dev.spemai.com/api/v1/sdk/chat/";
 
@@ -119,22 +121,20 @@ const ChatContainer = () => {
     xhr.onreadystatechange = function () {
       if (xhr.readyState === XMLHttpRequest.DONE) {
         if (xhr.status === 200) {
-          console.log("Response:", xhr.responseText);
+          console.log("Response status:", xhr.responseText.status);
+          console.log("Response message:", xhr.responseText.data.response_msg);
           if (xhr.responseText.status === 100) {
             const responseMessage = {
               text: xhr.responseText.data.response_msg,
               user: "OtherUser",
             };
             setMessages([...messages, responseMessage]);
-          } else {
-            const errorMessage = { text: "Error response", user: "OtherUser" };
-            setMessages([...messages, errorMessage]);
           }
           // Handle successful response here
         } else {
           console.error("Error:", xhr.status, xhr.statusText);
           // Handle error response here
-            const errorMessage = { text: 'Error fetching data:', user: currentUser };
+            const errorMessage = { text: 'Error fetching data:', user: "OtherUser" };
       setMessages([...messages, errorMessage]);
         }
       }

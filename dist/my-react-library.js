@@ -676,10 +676,15 @@ var ChatContainer = function ChatContainer() {
   // };
   var sendMessage = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(message) {
-      var xhr, url, send_data;
+      var newMessage, xhr, url, send_data;
       return _regeneratorRuntime().wrap(function _callee$(_context) {
         while (1) switch (_context.prev = _context.next) {
           case 0:
+            newMessage = {
+              text: message,
+              user: currentUser
+            };
+            setMessages([].concat(_toConsumableArray(messages), [newMessage]));
             xhr = new XMLHttpRequest();
             url = "https://api-cai-dev.spemai.com/api/v1/sdk/chat/";
             xhr.open("POST", url, true);
@@ -688,29 +693,24 @@ var ChatContainer = function ChatContainer() {
             xhr.onreadystatechange = function () {
               if (xhr.readyState === XMLHttpRequest.DONE) {
                 if (xhr.status === 200) {
-                  console.log("Response:", xhr.responseText);
+                  console.log("Response status:", xhr.responseText.status);
+                  console.log("Response message:", xhr.responseText.data.response_msg);
                   if (xhr.responseText.status === 100) {
                     var responseMessage = {
                       text: xhr.responseText.data.response_msg,
                       user: "OtherUser"
                     };
                     setMessages([].concat(_toConsumableArray(messages), [responseMessage]));
-                  } else {
-                    var errorMessage = {
-                      text: "Error response",
-                      user: "OtherUser"
-                    };
-                    setMessages([].concat(_toConsumableArray(messages), [errorMessage]));
                   }
                   // Handle successful response here
                 } else {
                   console.error("Error:", xhr.status, xhr.statusText);
                   // Handle error response here
-                  var _errorMessage = {
+                  var errorMessage = {
                     text: 'Error fetching data:',
-                    user: currentUser
+                    user: "OtherUser"
                   };
-                  setMessages([].concat(_toConsumableArray(messages), [_errorMessage]));
+                  setMessages([].concat(_toConsumableArray(messages), [errorMessage]));
                 }
               }
             };
@@ -721,7 +721,7 @@ var ChatContainer = function ChatContainer() {
               message: message
             });
             xhr.send(send_data);
-          case 8:
+          case 10:
           case "end":
             return _context.stop();
         }
