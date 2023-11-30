@@ -15,6 +15,9 @@ module.exports = {
     file: 'dist/my-react-library.js',
     format: 'cjs', // CommonJS format for Node compatibility
     exports: 'named',
+    globals: {
+      axios: 'axios' // Ensure axios is available globally if required
+    }
   },
   plugins: [
     resolve(), // resolve plugin
