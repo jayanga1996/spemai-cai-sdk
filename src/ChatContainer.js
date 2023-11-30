@@ -7,7 +7,8 @@ import arrow_left from "./images/arrow-left-s-line.png";
 
 import axios from "axios";
 
-const ChatContainer = ({name}) => {
+const ChatContainer = (props) => {
+  const { name } = props;
   const [messages, setMessages] = useState([]);
   const currentUser = "User123"; // Simulated current user
   const chatContainerStyles = {

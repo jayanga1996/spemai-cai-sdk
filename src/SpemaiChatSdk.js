@@ -6,8 +6,8 @@ import "./style.css";
 import ChatContainer from "./ChatContainer";
  import axios from 'axios';
 
-const SpemaiChatSdk = ({chatName}) => {
-
+const SpemaiChatSdk = (props) => {
+  const { chatName } = props;
   const [isOpen, setIsOpen] = useState(false);
   const text = "Hello from MyComponent!";
 
@@ -126,8 +126,8 @@ const createChatSession = async () => {
       "div",
       { style: styles.chatWindow },
       React.createElement(
-        ChatContainer({name:chatName}),
-        null,
+        ChatContainer,
+        {chatName},
       )
     )
   );
