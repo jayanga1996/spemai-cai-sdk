@@ -14,29 +14,58 @@ const SpemaiChatSdk = () => {
   const toggleChat = () => {
     setIsOpen(!isOpen);
   };
- const createChatSession = async()=>{
-  const url = "https://api-cai-dev.spemai.com/api/v1/sdk/session/";
-  const headers = {
-    "x-api-key": "LJn_mkBriEStcCMrb7XjL-7bx_OSXBZQuPAE4Ak1IwE",
-    "Content-Type": "application/json",
-    // Authorization: `Bearer ${token}`,
+//  const createChatSession = async()=>{
+//   const url = "https://api-cai-dev.spemai.com/api/v1/sdk/session/";
+//   const headers = {
+//     "x-api-key": "LJn_mkBriEStcCMrb7XjL-7bx_OSXBZQuPAE4Ak1IwE",
+//     "Content-Type": "application/json",
+//     // Authorization: `Bearer ${token}`,
 
-  };
-  const data ={
-    "client_id":1,
-    "client_name":"Dinal Fernando",
-    "agent_id":"cedfb2be-e8c8-43c7-89e8-6f730482749b"
-}
-  // Simulated API call or WebSocket to send the message
-  try {
-    const response = await axios.post(url, data, { headers });
-    console.log('Response:', response.data);
-  } catch (error) {
-    console.error('Error fetching data:', error);
-    console.log(axios);
-  }
+//   };
+//   const data ={
+//     "client_id":1,
+//     "client_name":"Dinal Fernando",
+//     "agent_id":"cedfb2be-e8c8-43c7-89e8-6f730482749b"
+// }
+//   // Simulated API call or WebSocket to send the message
+//   try {
+//     const response = await axios.post(url, data, { headers });
+//     console.log('Response:', response.data);
+//   } catch (error) {
+//     console.error('Error fetching data:', error);
+//     console.log(axios);
+//   }
   
- }
+//  }
+const createChatSession = async () => {
+  const xhr = new XMLHttpRequest();
+  const url = "https://api-cai-dev.spemai.com/api/v1/sdk/session/";
+  
+  xhr.open("POST", url, true);
+  xhr.setRequestHeader("Content-Type", "application/json");
+  xhr.setRequestHeader("x-api-key", "LJn_mkBriEStcCMrb7XjL-7bx_OSXBZQuPAE4Ak1IwE");
+
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+      if (xhr.status === 200) {
+        console.log('Response:', xhr.responseText);
+        // Handle successful response here
+      } else {
+        console.error('Error:', xhr.status, xhr.statusText);
+        // Handle error response here
+      }
+    }
+  };
+
+  const data = JSON.stringify({
+    "client_id": 1,
+    "client_name": "Dinal Fernando",
+    "agent_id": "cedfb2be-e8c8-43c7-89e8-6f730482749b"
+  });
+
+  xhr.send(data);
+};
+
   useEffect(()=>{
     createChatSession()
   },[])

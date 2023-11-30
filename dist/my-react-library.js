@@ -1,7 +1,7 @@
 'use strict';
 
 var React = require('react');
-var axios = require('axios');
+require('axios');
 
 function _iterableToArrayLimit(r, l) {
   var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"];
@@ -364,17 +364,8 @@ function _asyncToGenerator(fn) {
 function _slicedToArray(arr, i) {
   return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
 }
-function _toConsumableArray(arr) {
-  return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();
-}
-function _arrayWithoutHoles(arr) {
-  if (Array.isArray(arr)) return _arrayLikeToArray(arr);
-}
 function _arrayWithHoles(arr) {
   if (Array.isArray(arr)) return arr;
-}
-function _iterableToArray(iter) {
-  if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter);
 }
 function _unsupportedIterableToArray(o, minLen) {
   if (!o) return;
@@ -388,9 +379,6 @@ function _arrayLikeToArray(arr, len) {
   if (len == null || len > arr.length) len = arr.length;
   for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];
   return arr2;
-}
-function _nonIterableSpread() {
-  throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
 function _nonIterableRest() {
   throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
@@ -647,68 +635,78 @@ var ChatContainer = function ChatContainer() {
     }];
     setMessages(initialMessages);
   }, []);
+
+  // const sendMessage = async(message) => {
+  //   const url = "https://api-cai-dev.spemai.com/api/v1/sdk/chat/";
+  //   const newMessage = { text: message, user: currentUser };
+  //   const headers = {
+  //     "x-api-key": "LJn_mkBriEStcCMrb7XjL-7bx_OSXBZQuPAE4Ak1IwE",
+  //     "Content-Type": "application/json",
+  //     // Authorization: `Bearer ${token}`,
+
+  //   };
+  //   const send_data ={
+  //     "chat_id":"418285f6-7043-455e-a9e9-ef0e04ea3bfb",
+  //     "agent_id":"c07586718d5a4cafb6801836576ebed0",
+  //     "client_id":1,
+  //     "message":message
+  // }
+  //   setMessages([...messages, newMessage]);
+  //   // Simulated API call or WebSocket to send the message
+
+  // try {
+  //   const response = await axios.post(url, send_data, { headers });
+  //   console.log('Response:', response.data);
+  //   if(response.status === 100){
+  //     const responseMessage = { text: response.data.response_msg, user: "OtherUser" };
+  //     setMessages([...messages, responseMessage]);
+
+  //   }else{
+  //     const errorMessage = { text: "Error response", user: "OtherUser" };
+  //     setMessages([...messages, errorMessage]);
+  //   }
+  // } catch (error) {
+  //   console.error('Error fetching data:', error);
+  //   const errorMessage = { text: 'Error fetching data:', user: currentUser };
+  //     setMessages([...messages, errorMessage]);
+  //     console.log(axios);
+  // }
+
+  // };
   var sendMessage = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(message) {
-      var url, newMessage, headers, send_data, response, responseMessage, errorMessage, _errorMessage;
+      var xhr, url, send_data;
       return _regeneratorRuntime().wrap(function _callee$(_context) {
         while (1) switch (_context.prev = _context.next) {
           case 0:
+            xhr = new XMLHttpRequest();
             url = "https://api-cai-dev.spemai.com/api/v1/sdk/chat/";
-            newMessage = {
-              text: message,
-              user: currentUser
+            xhr.open("POST", url, true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.setRequestHeader("x-api-key", "LJn_mkBriEStcCMrb7XjL-7bx_OSXBZQuPAE4Ak1IwE");
+            xhr.onreadystatechange = function () {
+              if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                  console.log('Response:', xhr.responseText);
+                  // Handle successful response here
+                } else {
+                  console.error('Error:', xhr.status, xhr.statusText);
+                  // Handle error response here
+                }
+              }
             };
-            headers = {
-              "x-api-key": "LJn_mkBriEStcCMrb7XjL-7bx_OSXBZQuPAE4Ak1IwE",
-              "Content-Type": "application/json"
-              // Authorization: `Bearer ${token}`,
-            };
-            send_data = {
+            send_data = JSON.stringify({
               "chat_id": "418285f6-7043-455e-a9e9-ef0e04ea3bfb",
               "agent_id": "c07586718d5a4cafb6801836576ebed0",
               "client_id": 1,
               "message": message
-            };
-            setMessages([].concat(_toConsumableArray(messages), [newMessage]));
-            // Simulated API call or WebSocket to send the message
-            _context.prev = 5;
-            _context.next = 8;
-            return axios.post(url, send_data, {
-              headers: headers
             });
+            xhr.send(send_data);
           case 8:
-            response = _context.sent;
-            console.log('Response:', response.data);
-            if (response.status === 100) {
-              responseMessage = {
-                text: response.data.response_msg,
-                user: "OtherUser"
-              };
-              setMessages([].concat(_toConsumableArray(messages), [responseMessage]));
-            } else {
-              errorMessage = {
-                text: "Error response",
-                user: "OtherUser"
-              };
-              setMessages([].concat(_toConsumableArray(messages), [errorMessage]));
-            }
-            _context.next = 19;
-            break;
-          case 13:
-            _context.prev = 13;
-            _context.t0 = _context["catch"](5);
-            console.error('Error fetching data:', _context.t0);
-            _errorMessage = {
-              text: 'Error fetching data:',
-              user: currentUser
-            };
-            setMessages([].concat(_toConsumableArray(messages), [_errorMessage]));
-            console.log(axios);
-          case 19:
           case "end":
             return _context.stop();
         }
-      }, _callee, null, [[5, 13]]);
+      }, _callee);
     }));
     return function sendMessage(_x) {
       return _ref.apply(this, arguments);
@@ -748,43 +746,62 @@ var SpemaiChatSdk = function SpemaiChatSdk() {
   var toggleChat = function toggleChat() {
     setIsOpen(!isOpen);
   };
+  //  const createChatSession = async()=>{
+  //   const url = "https://api-cai-dev.spemai.com/api/v1/sdk/session/";
+  //   const headers = {
+  //     "x-api-key": "LJn_mkBriEStcCMrb7XjL-7bx_OSXBZQuPAE4Ak1IwE",
+  //     "Content-Type": "application/json",
+  //     // Authorization: `Bearer ${token}`,
+
+  //   };
+  //   const data ={
+  //     "client_id":1,
+  //     "client_name":"Dinal Fernando",
+  //     "agent_id":"cedfb2be-e8c8-43c7-89e8-6f730482749b"
+  // }
+  //   // Simulated API call or WebSocket to send the message
+  //   try {
+  //     const response = await axios.post(url, data, { headers });
+  //     console.log('Response:', response.data);
+  //   } catch (error) {
+  //     console.error('Error fetching data:', error);
+  //     console.log(axios);
+  //   }
+
+  //  }
   var createChatSession = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-      var url, headers, data, response;
+      var xhr, url, data;
       return _regeneratorRuntime().wrap(function _callee$(_context) {
         while (1) switch (_context.prev = _context.next) {
           case 0:
+            xhr = new XMLHttpRequest();
             url = "https://api-cai-dev.spemai.com/api/v1/sdk/session/";
-            headers = {
-              "x-api-key": "LJn_mkBriEStcCMrb7XjL-7bx_OSXBZQuPAE4Ak1IwE",
-              "Content-Type": "application/json"
-              // Authorization: `Bearer ${token}`,
+            xhr.open("POST", url, true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.setRequestHeader("x-api-key", "LJn_mkBriEStcCMrb7XjL-7bx_OSXBZQuPAE4Ak1IwE");
+            xhr.onreadystatechange = function () {
+              if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                  console.log('Response:', xhr.responseText);
+                  // Handle successful response here
+                } else {
+                  console.error('Error:', xhr.status, xhr.statusText);
+                  // Handle error response here
+                }
+              }
             };
-            data = {
+            data = JSON.stringify({
               "client_id": 1,
               "client_name": "Dinal Fernando",
               "agent_id": "cedfb2be-e8c8-43c7-89e8-6f730482749b"
-            }; // Simulated API call or WebSocket to send the message
-            _context.prev = 3;
-            _context.next = 6;
-            return axios.post(url, data, {
-              headers: headers
             });
-          case 6:
-            response = _context.sent;
-            console.log('Response:', response.data);
-            _context.next = 14;
-            break;
-          case 10:
-            _context.prev = 10;
-            _context.t0 = _context["catch"](3);
-            console.error('Error fetching data:', _context.t0);
-            console.log(axios);
-          case 14:
+            xhr.send(data);
+          case 8:
           case "end":
             return _context.stop();
         }
-      }, _callee, null, [[3, 10]]);
+      }, _callee);
     }));
     return function createChatSession() {
       return _ref.apply(this, arguments);
