@@ -684,7 +684,9 @@ var ChatContainer = function ChatContainer() {
               text: message,
               user: currentUser
             };
-            setMessages([].concat(_toConsumableArray(messages), [newMessage]));
+            setMessages(function (prevMsg) {
+              return [].concat(_toConsumableArray(prevMsg), [newMessage]);
+            });
             xhr = new XMLHttpRequest();
             url = "https://api-cai-dev.spemai.com/api/v1/sdk/chat/";
             xhr.open("POST", url, true);
@@ -703,7 +705,9 @@ var ChatContainer = function ChatContainer() {
                       text: responseMsg,
                       user: "OtherUser"
                     };
-                    setMessages([].concat(_toConsumableArray(messages), [responseMessage]));
+                    setMessages(function (prevMsg) {
+                      return [].concat(_toConsumableArray(prevMsg), [responseMessage]);
+                    });
                   }
                   // Handle successful response here
                 } else {
@@ -713,7 +717,9 @@ var ChatContainer = function ChatContainer() {
                     text: 'Error fetching data:',
                     user: "OtherUser"
                   };
-                  setMessages([].concat(_toConsumableArray(messages), [errorMessage]));
+                  setMessages(function (prevMsg) {
+                    return [].concat(_toConsumableArray(prevMsg), [errorMessage]);
+                  });
                 }
               }
             };
