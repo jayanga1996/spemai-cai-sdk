@@ -364,8 +364,17 @@ function _asyncToGenerator(fn) {
 function _slicedToArray(arr, i) {
   return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
 }
+function _toConsumableArray(arr) {
+  return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();
+}
+function _arrayWithoutHoles(arr) {
+  if (Array.isArray(arr)) return _arrayLikeToArray(arr);
+}
 function _arrayWithHoles(arr) {
   if (Array.isArray(arr)) return arr;
+}
+function _iterableToArray(iter) {
+  if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter);
 }
 function _unsupportedIterableToArray(o, minLen) {
   if (!o) return;
@@ -379,6 +388,9 @@ function _arrayLikeToArray(arr, len) {
   if (len == null || len > arr.length) len = arr.length;
   for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];
   return arr2;
+}
+function _nonIterableSpread() {
+  throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
 function _nonIterableRest() {
   throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
@@ -569,71 +581,60 @@ var ChatContainer = function ChatContainer() {
   var currentUser = "User123"; // Simulated current user
   var chatContainerStyles = {
     chatContainer: {
-      width: '25vw',
-      height: '70vh',
+      width: "25vw",
+      height: "70vh",
       flexShrink: 0,
-      fontFamily: 'Arial, sans-serif'
+      fontFamily: "Arial, sans-serif"
       /* Additional properties can be added here */
     },
 
     chatContainerHead: {
-      display: 'flex',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-      height: '9vh',
-      width: '100%',
-      borderBottom: '1px solid #F0F0F0',
-      padding: '20px'
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center",
+      height: "9vh",
+      width: "100%",
+      borderBottom: "1px solid #F0F0F0",
+      padding: "20px"
     },
     chatContainerBody: {
-      padding: '20px',
-      overflowY: 'scroll',
-      height: '50vh'
+      padding: "20px",
+      overflowY: "scroll",
+      height: "50vh"
     },
     chatContainerFooter: {
-      borderTop: '1px solid #F0F0F0',
-      padding: '20px',
-      height: '10vh'
+      borderTop: "1px solid #F0F0F0",
+      padding: "20px",
+      height: "10vh"
     },
     chatTopicText: {
-      color: '#000',
-      textAlign: 'center',
-      fontSize: '18px',
-      fontStyle: 'normal',
+      color: "#000",
+      textAlign: "center",
+      fontSize: "18px",
+      fontStyle: "normal",
       fontWeight: 500,
-      lineHeight: 'normal',
-      letterSpacing: '-0.3px',
-      display: 'flex',
-      justifyContent: 'start',
-      alignItems: 'center',
-      gap: '10px'
+      lineHeight: "normal",
+      letterSpacing: "-0.3px",
+      display: "flex",
+      justifyContent: "start",
+      alignItems: "center",
+      gap: "10px"
     },
     scrollbar: {
-      width: '0px'
+      width: "0px"
     }
   };
   React.useEffect(function () {
     // Simulated messages from an API call or WebSocket
-    var initialMessages = [{
-      text: "Hello!",
-      user: "User123"
-    }, {
-      text: "An employee loan is the amount of money sanctioned by the organization to help the employee in need. It is a form of financial assistance provided by the business to the employee. By lending the money to its employees, the organization lightens the financial burden on the employees.",
-      user: "OtherUser"
-    }, {
-      text: "Hello!",
-      user: "User123"
-    }, {
-      text: "Hi there!",
-      user: "OtherUser"
-    }, {
-      text: "Hello!",
-      user: "User123"
-    }, {
-      text: "An employee loan is the amount of money sanctioned by the organization to help the employee in need. It is a form of financial assistance provided by the business to the employee. By lending the money to its employees, the organization lightens the financial burden on the employees.!",
-      user: "OtherUser"
-    }];
-    setMessages(initialMessages);
+    // const initialMessages = [
+    //   { text: "Hello!", user: "User123" },
+    //   { text: "An employee loan is the amount of money sanctioned by the organization to help the employee in need. It is a form of financial assistance provided by the business to the employee. By lending the money to its employees, the organization lightens the financial burden on the employees.", user: "OtherUser" },
+    //   { text: "Hello!", user: "User123" },
+    //   { text: "Hi there!", user: "OtherUser" },
+    //   { text: "Hello!", user: "User123" },
+    //   { text: "An employee loan is the amount of money sanctioned by the organization to help the employee in need. It is a form of financial assistance provided by the business to the employee. By lending the money to its employees, the organization lightens the financial burden on the employees.!", user: "OtherUser" },
+    // ];
+    // setMessages(initialMessages);
   }, []);
 
   // const sendMessage = async(message) => {
@@ -687,19 +688,37 @@ var ChatContainer = function ChatContainer() {
             xhr.onreadystatechange = function () {
               if (xhr.readyState === XMLHttpRequest.DONE) {
                 if (xhr.status === 200) {
-                  console.log('Response:', xhr.responseText);
+                  console.log("Response:", xhr.responseText);
+                  if (response.status === 100) {
+                    var responseMessage = {
+                      text: xhr.responseText.data.response_msg,
+                      user: "OtherUser"
+                    };
+                    setMessages([].concat(_toConsumableArray(messages), [responseMessage]));
+                  } else {
+                    var errorMessage = {
+                      text: "Error response",
+                      user: "OtherUser"
+                    };
+                    setMessages([].concat(_toConsumableArray(messages), [errorMessage]));
+                  }
                   // Handle successful response here
                 } else {
-                  console.error('Error:', xhr.status, xhr.statusText);
+                  console.error("Error:", xhr.status, xhr.statusText);
                   // Handle error response here
+                  var _errorMessage = {
+                    text: 'Error fetching data:',
+                    user: currentUser
+                  };
+                  setMessages([].concat(_toConsumableArray(messages), [_errorMessage]));
                 }
               }
             };
             send_data = JSON.stringify({
-              "chat_id": "418285f6-7043-455e-a9e9-ef0e04ea3bfb",
-              "agent_id": "c07586718d5a4cafb6801836576ebed0",
-              "client_id": 1,
-              "message": message
+              chat_id: "418285f6-7043-455e-a9e9-ef0e04ea3bfb",
+              agent_id: "c07586718d5a4cafb6801836576ebed0",
+              client_id: 1,
+              message: message
             });
             xhr.send(send_data);
           case 8:
@@ -712,26 +731,26 @@ var ChatContainer = function ChatContainer() {
       return _ref.apply(this, arguments);
     };
   }();
-  return /*#__PURE__*/React.createElement('div', {
+  return /*#__PURE__*/React.createElement("div", {
     style: chatContainerStyles.chatContainer
-  }, /*#__PURE__*/React.createElement('div', {
+  }, /*#__PURE__*/React.createElement("div", {
     style: chatContainerStyles.chatContainerHead
-  }, /*#__PURE__*/React.createElement('div', {
+  }, /*#__PURE__*/React.createElement("div", {
     style: chatContainerStyles.chatTopicText
-  }, /*#__PURE__*/React.createElement('span', null /* You can add attributes here if needed */, /*#__PURE__*/React.createElement('img', {
+  }, /*#__PURE__*/React.createElement("span", null /* You can add attributes here if needed */, /*#__PURE__*/React.createElement("img", {
     src: img,
     width: 24,
     height: 24
-  })), 'Personals loan policy 2023'), /*#__PURE__*/React.createElement('img', {
+  })), "Personals loan policy 2023"), /*#__PURE__*/React.createElement("img", {
     src: img$1,
     width: 24,
     height: 24
-  })), /*#__PURE__*/React.createElement('div', {
+  })), /*#__PURE__*/React.createElement("div", {
     style: chatContainerStyles.chatContainerBody
   }, /*#__PURE__*/React.createElement(MessageList, {
     messages: messages,
     currentUser: currentUser
-  })), /*#__PURE__*/React.createElement('div', {
+  })), /*#__PURE__*/React.createElement("div", {
     style: chatContainerStyles.chatContainerFooter
   }, /*#__PURE__*/React.createElement(SendMessageForm, {
     sendMessage: sendMessage
