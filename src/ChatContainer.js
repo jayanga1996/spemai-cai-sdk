@@ -120,7 +120,7 @@ const ChatContainer = () => {
       if (xhr.readyState === XMLHttpRequest.DONE) {
         if (xhr.status === 200) {
           console.log("Response:", xhr.responseText);
-          if (response.status === 100) {
+          if (xhr.responseText.data.status === 100) {
             const responseMessage = {
               text: xhr.responseText.data.response_msg,
               user: "OtherUser",
