@@ -8,7 +8,7 @@ import arrow_left from "./images/arrow-left-s-line.png";
 import axios from "axios";
 
 const ChatContainer = (props) => {
-  const { chatName,apikey } = props;
+  const { chatName,apikey,sessionId } = props;
   const [messages, setMessages] = useState([]);
   const currentUser = "User123"; // Simulated current user
   const chatContainerStyles = {
@@ -57,9 +57,13 @@ const ChatContainer = (props) => {
   };
 
   useEffect(() => {
+    if(sessionId !== ""){
+      const initMsg ={ text: "Hi, How can I help you?", user: "User123" };
+      setMessages(initMsg);
+    }
     // Simulated messages from an API call or WebSocket
     // const initialMessages = [
-    //   { text: "Hello!", user: "User123" },
+    //   { text: "Hi, How can I help you?", user: "User123" },
     //   { text: "An employee loan is the amount of money sanctioned by the organization to help the employee in need. It is a form of financial assistance provided by the business to the employee. By lending the money to its employees, the organization lightens the financial burden on the employees.", user: "OtherUser" },
     //   { text: "Hello!", user: "User123" },
     //   { text: "Hi there!", user: "OtherUser" },

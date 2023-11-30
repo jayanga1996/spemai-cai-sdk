@@ -575,7 +575,8 @@ var img = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAA
 
 var ChatContainer = function ChatContainer(props) {
   var chatName = props.chatName,
-    apikey = props.apikey;
+    apikey = props.apikey,
+    sessionId = props.sessionId;
   var _useState = React.useState([]),
     _useState2 = _slicedToArray(_useState, 2),
     messages = _useState2[0],
@@ -627,9 +628,16 @@ var ChatContainer = function ChatContainer(props) {
     }
   };
   React.useEffect(function () {
+    if (sessionId !== "") {
+      var initMsg = {
+        text: "Hi, How can I help you?",
+        user: "User123"
+      };
+      setMessages(initMsg);
+    }
     // Simulated messages from an API call or WebSocket
     // const initialMessages = [
-    //   { text: "Hello!", user: "User123" },
+    //   { text: "Hi, How can I help you?", user: "User123" },
     //   { text: "An employee loan is the amount of money sanctioned by the organization to help the employee in need. It is a form of financial assistance provided by the business to the employee. By lending the money to its employees, the organization lightens the financial burden on the employees.", user: "OtherUser" },
     //   { text: "Hello!", user: "User123" },
     //   { text: "Hi there!", user: "OtherUser" },
@@ -770,13 +778,24 @@ var ChatContainer = function ChatContainer(props) {
 
 var SpemaiChatSdk = function SpemaiChatSdk(props) {
   var chatName = props.chatName,
-    apikey = props.apikey;
+    api_key = props.api_key,
+    agent_id = props.agent_id;
   var _useState = React.useState(false),
     _useState2 = _slicedToArray(_useState, 2),
     isOpen = _useState2[0],
     setIsOpen = _useState2[1];
-  var toggleChat = function toggleChat() {
-    setIsOpen(!isOpen);
+  var _useState3 = React.useState(""),
+    _useState4 = _slicedToArray(_useState3, 2),
+    sessionId = _useState4[0],
+    setSessionId = _useState4[1];
+  var openChat = function openChat() {
+    setIsOpen(true);
+    if (api_key !== "" && agent_id !== "") {
+      createChatSession();
+    }
+  };
+  var closeChat = function closeChat() {
+    setIsOpen(false);
   };
   //  const createChatSession = async()=>{
   //   const url = "https://api-cai-dev.spemai.com/api/v1/sdk/session/";
@@ -811,10 +830,14 @@ var SpemaiChatSdk = function SpemaiChatSdk(props) {
             url = "https://api-cai-dev.spemai.com/api/v1/sdk/session/";
             xhr.open("POST", url, true);
             xhr.setRequestHeader("Content-Type", "application/json");
-            xhr.setRequestHeader("x-api-key", apikey);
+            xhr.setRequestHeader("x-api-key", api_key);
             xhr.onreadystatechange = function () {
               if (xhr.readyState === XMLHttpRequest.DONE) {
                 if (xhr.status === 200) {
+                  var responseObj = JSON.parse(xhr.responseText);
+                  if (responseObj.status === 100) {
+                    setSessionId(responseObj.data.session_id);
+                  }
                   console.log('Response:', xhr.responseText);
                   // Handle successful response here
                 } else {
@@ -826,7 +849,7 @@ var SpemaiChatSdk = function SpemaiChatSdk(props) {
             data = JSON.stringify({
               "client_id": 1,
               "client_name": "Dinal Fernando",
-              "agent_id": "cedfb2be-e8c8-43c7-89e8-6f730482749b"
+              "agent_id": agent_id
             });
             xhr.send(data);
           case 8:
@@ -840,7 +863,7 @@ var SpemaiChatSdk = function SpemaiChatSdk(props) {
     };
   }();
   React.useEffect(function () {
-    createChatSession();
+    //createChatSession()
   }, []);
 
   // Define CSS styles as JavaScript objects
@@ -899,31 +922,33 @@ var SpemaiChatSdk = function SpemaiChatSdk(props) {
     src: img$3,
     alt: "Example",
     onClick: function onClick() {
-      return toggleChat();
+      return openChat();
     }
   }), isOpen && /*#__PURE__*/React.createElement("img", {
     style: styles.chatCloseIcon,
     src: img$2,
     alt: "Example",
     onClick: function onClick() {
-      return toggleChat();
+      return closeChat();
     }
   })), isOpen && /*#__PURE__*/React.createElement("div", {
     style: styles.chatWindow
   }, /*#__PURE__*/React.createElement(ChatContainer, {
     chatName: chatName,
-    apikey: apikey
+    api_key: api_key,
+    sessionId: sessionId
   })));
 };
 
 // MyComponent.js
-var MyComponent = function MyComponent(_ref) {
+var SpemaiCaiSdk = function SpemaiCaiSdk(_ref) {
   var chatName = _ref.chatName,
-    apikey = _ref.apikey;
+    api_key = _ref.api_key;
   return /*#__PURE__*/React.createElement(SpemaiChatSdk, {
     chatName: chatName,
-    apikey: apikey
+    api_key: api_key,
+    agent_id: agent_id
   });
 };
 
-exports.MyComponent = MyComponent;
+exports.SpemaiCaiSdk = SpemaiCaiSdk;

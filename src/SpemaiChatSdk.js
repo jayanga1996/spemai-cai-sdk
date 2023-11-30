@@ -7,13 +7,23 @@ import ChatContainer from "./ChatContainer";
  import axios from 'axios';
 
 const SpemaiChatSdk = (props) => {
-  const { chatName,apikey } = props;
+  const { chatName,api_key,agent_id } = props;
   const [isOpen, setIsOpen] = useState(false);
+  const [sessionId, setSessionId] = useState("");
   const text = "Hello from MyComponent!";
 
   const toggleChat = () => {
     setIsOpen(!isOpen);
   };
+  const openChat =()=>{
+    setIsOpen(true);
+    if(api_key !== "" && agent_id !== ""){
+      createChatSession()
+    }
+  }
+  const closeChat =()=>{
+    setIsOpen(false);
+  }
 //  const createChatSession = async()=>{
 //   const url = "https://api-cai-dev.spemai.com/api/v1/sdk/session/";
 //   const headers = {
@@ -43,11 +53,15 @@ const createChatSession = async () => {
   
   xhr.open("POST", url, true);
   xhr.setRequestHeader("Content-Type", "application/json");
-  xhr.setRequestHeader("x-api-key", apikey);
+  xhr.setRequestHeader("x-api-key", api_key);
 
   xhr.onreadystatechange = function () {
     if (xhr.readyState === XMLHttpRequest.DONE) {
       if (xhr.status === 200) {
+        const responseObj = JSON.parse(xhr.responseText);
+        if(responseObj.status === 100){
+          setSessionId(responseObj.data.session_id)
+        }
         console.log('Response:', xhr.responseText);
         // Handle successful response here
       } else {
@@ -60,14 +74,14 @@ const createChatSession = async () => {
   const data = JSON.stringify({
     "client_id": 1,
     "client_name": "Dinal Fernando",
-    "agent_id": "cedfb2be-e8c8-43c7-89e8-6f730482749b"
+    "agent_id": agent_id
   });
 
   xhr.send(data);
 };
 
   useEffect(()=>{
-    createChatSession()
+    //createChatSession()
   },[])
 
   // Define CSS styles as JavaScript objects
@@ -119,15 +133,15 @@ const createChatSession = async () => {
     React.createElement(
       "div",
       { style: styles.iconSet },
-      !isOpen && React.createElement("img", { style: styles.chatIcon, src: exampleImage2, alt: "Example",onClick: () => toggleChat() }),
-      isOpen && React.createElement("img", { style: styles.chatCloseIcon, src: exampleImage3, alt: "Example",onClick: () => toggleChat()  })
+      !isOpen && React.createElement("img", { style: styles.chatIcon, src: exampleImage2, alt: "Example",onClick: () => openChat() }),
+      isOpen && React.createElement("img", { style: styles.chatCloseIcon, src: exampleImage3, alt: "Example",onClick: () => closeChat()  })
     ),
     isOpen && React.createElement(
       "div",
       { style: styles.chatWindow },
       React.createElement(
         ChatContainer,
-        {chatName,apikey},
+        {chatName,api_key,sessionId},
       )
     )
   );
