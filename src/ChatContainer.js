@@ -7,7 +7,7 @@ import arrow_left from "./images/arrow-left-s-line.png";
 
 import axios from "axios";
 
-const ChatContainer = () => {
+const ChatContainer = ({name}) => {
   const [messages, setMessages] = useState([]);
   const currentUser = "User123"; // Simulated current user
   const chatContainerStyles = {
@@ -166,7 +166,7 @@ const ChatContainer = () => {
           null /* You can add attributes here if needed */,
           React.createElement("img", { src: arrow_left, width: 24, height: 24 })
         ),
-        "Personals loan policy 2023"
+        name
       ),
       React.createElement("img", { src: full_exit, width: 24, height: 24 })
     ),

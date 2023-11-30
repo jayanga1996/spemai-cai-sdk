@@ -573,7 +573,8 @@ var img$1 = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6A
 
 var img = "data:image/png;base64,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";
 
-var ChatContainer = function ChatContainer() {
+var ChatContainer = function ChatContainer(_ref) {
+  var name = _ref.name;
   var _useState = React.useState([]),
     _useState2 = _slicedToArray(_useState, 2),
     messages = _useState2[0],
@@ -675,7 +676,7 @@ var ChatContainer = function ChatContainer() {
 
   // };
   var sendMessage = /*#__PURE__*/function () {
-    var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(message) {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(message) {
       var newMessage, xhr, url, send_data;
       return _regeneratorRuntime().wrap(function _callee$(_context) {
         while (1) switch (_context.prev = _context.next) {
@@ -737,7 +738,7 @@ var ChatContainer = function ChatContainer() {
       }, _callee);
     }));
     return function sendMessage(_x) {
-      return _ref.apply(this, arguments);
+      return _ref2.apply(this, arguments);
     };
   }();
   return /*#__PURE__*/React.createElement("div", {
@@ -750,7 +751,7 @@ var ChatContainer = function ChatContainer() {
     src: img,
     width: 24,
     height: 24
-  })), "Personals loan policy 2023"), /*#__PURE__*/React.createElement("img", {
+  })), name), /*#__PURE__*/React.createElement("img", {
     src: img$1,
     width: 24,
     height: 24
@@ -766,7 +767,8 @@ var ChatContainer = function ChatContainer() {
   })));
 };
 
-var SpemaiChatSdk = function SpemaiChatSdk() {
+var SpemaiChatSdk = function SpemaiChatSdk(_ref) {
+  var chatName = _ref.chatName;
   var _useState = React.useState(false),
     _useState2 = _slicedToArray(_useState, 2),
     isOpen = _useState2[0],
@@ -798,7 +800,7 @@ var SpemaiChatSdk = function SpemaiChatSdk() {
 
   //  }
   var createChatSession = /*#__PURE__*/function () {
-    var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
       var xhr, url, data;
       return _regeneratorRuntime().wrap(function _callee$(_context) {
         while (1) switch (_context.prev = _context.next) {
@@ -832,7 +834,7 @@ var SpemaiChatSdk = function SpemaiChatSdk() {
       }, _callee);
     }));
     return function createChatSession() {
-      return _ref.apply(this, arguments);
+      return _ref2.apply(this, arguments);
     };
   }();
   React.useEffect(function () {
@@ -906,12 +908,17 @@ var SpemaiChatSdk = function SpemaiChatSdk() {
     }
   })), isOpen && /*#__PURE__*/React.createElement("div", {
     style: styles.chatWindow
-  }, /*#__PURE__*/React.createElement(ChatContainer, null)));
+  }, /*#__PURE__*/React.createElement(ChatContainer({
+    name: chatName
+  }), null)));
 };
 
 // MyComponent.js
-var MyComponent = function MyComponent() {
-  return /*#__PURE__*/React.createElement(SpemaiChatSdk, null);
+var MyComponent = function MyComponent(_ref) {
+  var chatName = _ref.chatName;
+  return /*#__PURE__*/React.createElement(SpemaiChatSdk({
+    chatName: chatName
+  }), null);
 };
 
 exports.MyComponent = MyComponent;
