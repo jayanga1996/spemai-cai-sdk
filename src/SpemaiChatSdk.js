@@ -7,7 +7,7 @@ import ChatContainer from "./ChatContainer";
  import axios from 'axios';
 
 const SpemaiChatSdk = (props) => {
-  const { chatName } = props;
+  const { chatName,apikey } = props;
   const [isOpen, setIsOpen] = useState(false);
   const text = "Hello from MyComponent!";
 
@@ -43,7 +43,7 @@ const createChatSession = async () => {
   
   xhr.open("POST", url, true);
   xhr.setRequestHeader("Content-Type", "application/json");
-  xhr.setRequestHeader("x-api-key", "LJn_mkBriEStcCMrb7XjL-7bx_OSXBZQuPAE4Ak1IwE");
+  xhr.setRequestHeader("x-api-key", apikey);
 
   xhr.onreadystatechange = function () {
     if (xhr.readyState === XMLHttpRequest.DONE) {
@@ -127,7 +127,7 @@ const createChatSession = async () => {
       { style: styles.chatWindow },
       React.createElement(
         ChatContainer,
-        {chatName},
+        {chatName,apikey},
       )
     )
   );

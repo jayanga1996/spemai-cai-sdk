@@ -574,7 +574,8 @@ var img$1 = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6A
 var img = "data:image/png;base64,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";
 
 var ChatContainer = function ChatContainer(props) {
-  var chatName = props.chatName;
+  var chatName = props.chatName,
+    apikey = props.apikey;
   var _useState = React.useState([]),
     _useState2 = _slicedToArray(_useState, 2),
     messages = _useState2[0],
@@ -692,7 +693,7 @@ var ChatContainer = function ChatContainer(props) {
             url = "https://api-cai-dev.spemai.com/api/v1/sdk/chat/";
             xhr.open("POST", url, true);
             xhr.setRequestHeader("Content-Type", "application/json");
-            xhr.setRequestHeader("x-api-key", "LJn_mkBriEStcCMrb7XjL-7bx_OSXBZQuPAE4Ak1IwE");
+            xhr.setRequestHeader("x-api-key", apikey);
             xhr.onreadystatechange = function () {
               if (xhr.readyState === XMLHttpRequest.DONE) {
                 if (xhr.status === 200) {
@@ -768,7 +769,8 @@ var ChatContainer = function ChatContainer(props) {
 };
 
 var SpemaiChatSdk = function SpemaiChatSdk(props) {
-  var chatName = props.chatName;
+  var chatName = props.chatName,
+    apikey = props.apikey;
   var _useState = React.useState(false),
     _useState2 = _slicedToArray(_useState, 2),
     isOpen = _useState2[0],
@@ -809,7 +811,7 @@ var SpemaiChatSdk = function SpemaiChatSdk(props) {
             url = "https://api-cai-dev.spemai.com/api/v1/sdk/session/";
             xhr.open("POST", url, true);
             xhr.setRequestHeader("Content-Type", "application/json");
-            xhr.setRequestHeader("x-api-key", "LJn_mkBriEStcCMrb7XjL-7bx_OSXBZQuPAE4Ak1IwE");
+            xhr.setRequestHeader("x-api-key", apikey);
             xhr.onreadystatechange = function () {
               if (xhr.readyState === XMLHttpRequest.DONE) {
                 if (xhr.status === 200) {
@@ -909,7 +911,8 @@ var SpemaiChatSdk = function SpemaiChatSdk(props) {
   })), isOpen && /*#__PURE__*/React.createElement("div", {
     style: styles.chatWindow
   }, /*#__PURE__*/React.createElement(ChatContainer, {
-    chatName: chatName
+    chatName: chatName,
+    apikey: apikey
   })));
 };
 
@@ -917,7 +920,8 @@ var SpemaiChatSdk = function SpemaiChatSdk(props) {
 var MyComponent = function MyComponent(_ref) {
   var chatName = _ref.chatName;
   return /*#__PURE__*/React.createElement(SpemaiChatSdk, {
-    chatName: chatName
+    chatName: chatName,
+    apikey: apikey
   });
 };
 

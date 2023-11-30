@@ -8,7 +8,7 @@ import arrow_left from "./images/arrow-left-s-line.png";
 import axios from "axios";
 
 const ChatContainer = (props) => {
-  const { chatName } = props;
+  const { chatName,apikey } = props;
   const [messages, setMessages] = useState([]);
   const currentUser = "User123"; // Simulated current user
   const chatContainerStyles = {
@@ -116,7 +116,7 @@ const ChatContainer = (props) => {
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.setRequestHeader(
       "x-api-key",
-      "LJn_mkBriEStcCMrb7XjL-7bx_OSXBZQuPAE4Ak1IwE"
+      apikey
     );
 
     xhr.onreadystatechange = function () {
