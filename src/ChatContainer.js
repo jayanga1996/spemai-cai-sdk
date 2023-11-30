@@ -56,20 +56,15 @@ const ChatContainer = (props) => {
   };
 
   useEffect(() => {
-    if(sessionId !== ""){
-      const initMsg ={ text: "Hi, How can I help you?", user: "User123" };
-      setMessages(initMsg);
-    }
+    // if(sessionId !== ""){
+    //   const initMsg ={ text: "Hi, How can I help you?", user: "User123" };
+    //   setMessages(initMsg);
+    // }
     // Simulated messages from an API call or WebSocket
-    // const initialMessages = [
-    //   { text: "Hi, How can I help you?", user: "User123" },
-    //   { text: "An employee loan is the amount of money sanctioned by the organization to help the employee in need. It is a form of financial assistance provided by the business to the employee. By lending the money to its employees, the organization lightens the financial burden on the employees.", user: "OtherUser" },
-    //   { text: "Hello!", user: "User123" },
-    //   { text: "Hi there!", user: "OtherUser" },
-    //   { text: "Hello!", user: "User123" },
-    //   { text: "An employee loan is the amount of money sanctioned by the organization to help the employee in need. It is a form of financial assistance provided by the business to the employee. By lending the money to its employees, the organization lightens the financial burden on the employees.!", user: "OtherUser" },
-    // ];
-    // setMessages(initialMessages);
+    const initialMessages = [
+      { text: "Hi, How can I help you?", user: "User123" },
+     ];
+    setMessages(initialMessages);
   }, []);
 
   // const sendMessage = async(message) => {
