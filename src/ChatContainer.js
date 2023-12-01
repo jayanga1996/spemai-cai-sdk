@@ -7,6 +7,7 @@ import arrow_left from "./images/arrow-left-s-line.png";
 
 
 const ChatContainer = (props) => {
+  const baseUrl = process.env.DEV_BASE_URL;
   const { chatName,api_key,agent_id,sessionId } = props;
   const [messages, setMessages] = useState([]);
   const currentUser = "User123"; // Simulated current user
@@ -108,7 +109,7 @@ const ChatContainer = (props) => {
     const newMessage = { text: message, user: currentUser };
     setMessages((prevMsg) =>[...prevMsg, newMessage]);
     var xhr = new XMLHttpRequest();
-    var url = "https://api-cai-dev.spemai.com/api/v1/sdk/chat/";
+    var url = baseUrl+"api/v1/sdk/chat/";
 
     xhr.open("POST", url, true);
     xhr.setRequestHeader("Content-Type", "application/json");

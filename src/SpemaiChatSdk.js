@@ -10,6 +10,7 @@ const SpemaiChatSdk = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [sessionId, setSessionId] = useState("");
   const text = "Hello from MyComponent!";
+  const baseUrl = process.env.DEV_BASE_URL;
 
   const toggleChat = () => {
     setIsOpen(!isOpen);
@@ -48,7 +49,7 @@ const SpemaiChatSdk = (props) => {
 //  }
 const createChatSession = async () => {
   const xhr = new XMLHttpRequest();
-  const url = "https://api-cai-dev.spemai.com/api/v1/sdk/session/";
+  const url = baseUrl+"api/v1/sdk/session/";
   
   xhr.open("POST", url, true);
   xhr.setRequestHeader("Content-Type", "application/json");
