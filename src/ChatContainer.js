@@ -63,48 +63,12 @@ const ChatContainer = (props) => {
     // }
     // Simulated messages from an API call or WebSocket
     const initialMessages = [
-      { text: "Hi, How can I help you?", user: "User123" },
+      { text: "Hi, How can I help you?", user: "Merchant" },
      ];
     setMessages(initialMessages);
   }, []);
 
-  // const sendMessage = async(message) => {
-  //   const url = "https://api-cai-dev.spemai.com/api/v1/sdk/chat/";
-  //   const newMessage = { text: message, user: currentUser };
-  //   const headers = {
-  //     "x-api-key": "LJn_mkBriEStcCMrb7XjL-7bx_OSXBZQuPAE4Ak1IwE",
-  //     "Content-Type": "application/json",
-  //     // Authorization: `Bearer ${token}`,
-
-  //   };
-  //   const send_data ={
-  //     "chat_id":"418285f6-7043-455e-a9e9-ef0e04ea3bfb",
-  //     "agent_id":"c07586718d5a4cafb6801836576ebed0",
-  //     "client_id":1,
-  //     "message":message
-  // }
-  //   setMessages([...messages, newMessage]);
-  //   // Simulated API call or WebSocket to send the message
-
-  // try {
-  //   const response = await axios.post(url, send_data, { headers });
-  //   console.log('Response:', response.data);
-  //   if(response.status === 100){
-  //     const responseMessage = { text: response.data.response_msg, user: "OtherUser" };
-  //     setMessages([...messages, responseMessage]);
-
-  //   }else{
-  //     const errorMessage = { text: "Error response", user: "OtherUser" };
-  //     setMessages([...messages, errorMessage]);
-  //   }
-  // } catch (error) {
-  //   console.error('Error fetching data:', error);
-  //   const errorMessage = { text: 'Error fetching data:', user: currentUser };
-  //     setMessages([...messages, errorMessage]);
-  //     console.log(axios);
-  // }
-
-  // };
+  
   const sendMessage = async (message) => {
     const newMessage = { text: message, user: currentUser };
     setMessages((prevMsg) =>[...prevMsg, newMessage]);
