@@ -6,7 +6,7 @@ import "./style.css";
 import ChatContainer from "./ChatContainer";
 
 const SpemaiChatSdk = (props) => {
-  const { chatName,api_key,agent_id } = props;
+  const { data } = props;
   const [isOpen, setIsOpen] = useState(false);
   const [sessionId, setSessionId] = useState("");
   const text = "Hello from MyComponent!";
@@ -31,7 +31,7 @@ const createChatSession = async () => {
   
   xhr.open("POST", url, true);
   xhr.setRequestHeader("Content-Type", "application/json");
-  xhr.setRequestHeader("x-api-key", api_key);
+  xhr.setRequestHeader("x-api-key", data.api_key);
 
   xhr.onreadystatechange = function () {
     if (xhr.readyState === XMLHttpRequest.DONE) {
@@ -50,9 +50,9 @@ const createChatSession = async () => {
   };
 
   const data = JSON.stringify({
-    "client_id": 1,
-    "client_name": "Dinal Fernando",
-    "agent_id": agent_id
+    "client_id": data.client_id,
+    "client_name": data.client_name,
+    "agent_id": data.agent_id
   });
 
   xhr.send(data);
@@ -119,7 +119,7 @@ const createChatSession = async () => {
       { style: styles.chatWindow },
       React.createElement(
         ChatContainer,
-        {chatName,api_key,agent_id,sessionId},
+        {data,sessionId},
       )
     )
   );

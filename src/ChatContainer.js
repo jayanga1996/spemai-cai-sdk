@@ -8,7 +8,7 @@ import arrow_left from "./images/arrow-left-s-line.png";
 
 const ChatContainer = (props) => {
   const baseUrl = process.env.DEV_BASE_URL;
-  const { chatName,api_key,agent_id,sessionId } = props;
+  const { data,sessionId } = props;
   const [messages, setMessages] = useState([]);
   const currentUser = "User123"; // Simulated current user
   const chatContainerStyles = {
@@ -80,7 +80,7 @@ const ChatContainer = (props) => {
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.setRequestHeader(
       "x-api-key",
-      api_key
+      data.api_key
     );
 
     xhr.onreadystatechange = function () {
@@ -109,8 +109,8 @@ const ChatContainer = (props) => {
 
     var send_data = JSON.stringify({
       chat_id: sessionId,
-      agent_id: agent_id,
-      client_id: 1,
+      agent_id: data.agent_id,
+      client_id: data.client_id,
       message: message,
     });
 
