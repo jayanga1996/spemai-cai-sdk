@@ -586,7 +586,11 @@ var img = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAA
 
 var ChatContainer = function ChatContainer(props) {
   process.env.DEV_BASE_URL;
-  var data = props.data,
+  var api_key = props.api_key,
+    agent_id = props.agent_id,
+    client_id = props.client_id;
+    props.client_name;
+    var chat_name = props.chat_name,
     sessionId = props.sessionId;
   var _useState = React.useState([]),
     _useState2 = _slicedToArray(_useState, 2),
@@ -667,7 +671,7 @@ var ChatContainer = function ChatContainer(props) {
             url = "https://api-cai-dev.spemai.com/api/v1/sdk/chat/";
             xhr.open("POST", url, true);
             xhr.setRequestHeader("Content-Type", "application/json");
-            xhr.setRequestHeader("x-api-key", data.api_key);
+            xhr.setRequestHeader("x-api-key", api_key);
             xhr.onreadystatechange = function () {
               if (xhr.readyState === XMLHttpRequest.DONE) {
                 if (xhr.status === 200) {
@@ -701,8 +705,8 @@ var ChatContainer = function ChatContainer(props) {
             };
             send_data = JSON.stringify({
               chat_id: sessionId,
-              agent_id: data.agent_id,
-              client_id: data.client_id,
+              agent_id: agent_id,
+              client_id: client_id,
               message: message
             });
             xhr.send(send_data);
@@ -726,7 +730,7 @@ var ChatContainer = function ChatContainer(props) {
     src: img,
     width: 24,
     height: 24
-  })), chatName), /*#__PURE__*/React.createElement("img", {
+  })), chat_name), /*#__PURE__*/React.createElement("img", {
     src: img$1,
     width: 24,
     height: 24
@@ -743,7 +747,11 @@ var ChatContainer = function ChatContainer(props) {
 };
 
 var SpemaiChatSdk = function SpemaiChatSdk(props) {
-  var data = props.data;
+  var api_key = props.api_key,
+    agent_id = props.agent_id,
+    client_id = props.client_id,
+    client_name = props.client_name,
+    chat_name = props.chat_name;
   var _useState = React.useState(false),
     _useState2 = _slicedToArray(_useState, 2),
     isOpen = _useState2[0],
@@ -771,7 +779,7 @@ var SpemaiChatSdk = function SpemaiChatSdk(props) {
             url = "https://api-cai-dev.spemai.com/api/v1/sdk/session/";
             xhr.open("POST", url, true);
             xhr.setRequestHeader("Content-Type", "application/json");
-            xhr.setRequestHeader("x-api-key", data.api_key);
+            xhr.setRequestHeader("x-api-key", api_key);
             xhr.onreadystatechange = function () {
               if (xhr.readyState === XMLHttpRequest.DONE) {
                 if (xhr.status === 200) {
@@ -788,9 +796,9 @@ var SpemaiChatSdk = function SpemaiChatSdk(props) {
               }
             };
             data = JSON.stringify({
-              "client_id": data.client_id,
-              "client_name": data.client_name,
-              "agent_id": data.agent_id
+              "client_id": client_id,
+              "client_name": client_name,
+              "agent_id": agent_id
             });
             xhr.send(data);
           case 8:
@@ -875,7 +883,11 @@ var SpemaiChatSdk = function SpemaiChatSdk(props) {
   })), isOpen && /*#__PURE__*/React.createElement("div", {
     style: styles.chatWindow
   }, /*#__PURE__*/React.createElement(ChatContainer, {
-    data: data,
+    api_key: api_key,
+    agent_id: agent_id,
+    client_id: client_id,
+    client_name: client_name,
+    chat_name: chat_name,
     sessionId: sessionId
   })));
 };
@@ -883,8 +895,17 @@ var SpemaiChatSdk = function SpemaiChatSdk(props) {
 // MyComponent.js
 var SpemaiCaiSdk = function SpemaiCaiSdk(_ref) {
   var data = _ref.data;
+  var api_key = data.api_key,
+    agent_id = data.agent_id,
+    client_id = data.client_id,
+    client_name = data.client_name,
+    chat_name = data.chat_name;
   return /*#__PURE__*/React.createElement(SpemaiChatSdk, {
-    data: data
+    api_key: api_key,
+    agent_id: agent_id,
+    client_id: client_id,
+    client_name: client_name,
+    chat_name: chat_name
   });
 };
 

@@ -8,7 +8,7 @@ import arrow_left from "./images/arrow-left-s-line.png";
 
 const ChatContainer = (props) => {
   const baseUrl = process.env.DEV_BASE_URL;
-  const { data,sessionId } = props;
+  const { api_key, agent_id, client_id, client_name, chat_name,sessionId } = props;
   const [messages, setMessages] = useState([]);
   const currentUser = "User123"; // Simulated current user
   const chatContainerStyles = {
@@ -80,7 +80,7 @@ const ChatContainer = (props) => {
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.setRequestHeader(
       "x-api-key",
-      data.api_key
+      api_key
     );
 
     xhr.onreadystatechange = function () {
@@ -109,8 +109,8 @@ const ChatContainer = (props) => {
 
     var send_data = JSON.stringify({
       chat_id: sessionId,
-      agent_id: data.agent_id,
-      client_id: data.client_id,
+      agent_id: agent_id,
+      client_id: client_id,
       message: message,
     });
 
@@ -131,7 +131,7 @@ const ChatContainer = (props) => {
           null /* You can add attributes here if needed */,
           React.createElement("img", { src: arrow_left, width: 24, height: 24 })
         ),
-        chatName
+        chat_name
       ),
       React.createElement("img", { src: full_exit, width: 24, height: 24 })
     ),
