@@ -525,7 +525,8 @@ var SendMessageForm = function SendMessageForm(_ref) {
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
-      padding: '5px'
+      padding: '5px',
+      marginBottom: '10px'
     },
     inputText: {
       width: '80%',
