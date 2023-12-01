@@ -573,7 +573,7 @@ var img$1 = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6A
 var img = "data:image/png;base64,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";
 
 var ChatContainer = function ChatContainer(props) {
-  var baseUrl = process.env.DEV_BASE_URL;
+  process.env.DEV_BASE_URL;
   var chatName = props.chatName,
     api_key = props.api_key,
     agent_id = props.agent_id,
@@ -692,7 +692,7 @@ var ChatContainer = function ChatContainer(props) {
               return [].concat(_toConsumableArray(prevMsg), [newMessage]);
             });
             xhr = new XMLHttpRequest();
-            url = baseUrl + "api/v1/sdk/chat/";
+            url = "https://api-cai-dev.spemai.com/api/v1/sdk/chat/";
             xhr.open("POST", url, true);
             xhr.setRequestHeader("Content-Type", "application/json");
             xhr.setRequestHeader("x-api-key", api_key);
@@ -782,7 +782,6 @@ var SpemaiChatSdk = function SpemaiChatSdk(props) {
     _useState4 = _slicedToArray(_useState3, 2),
     sessionId = _useState4[0],
     setSessionId = _useState4[1];
-  var baseUrl = process.env.DEV_BASE_URL;
   var openChat = function openChat() {
     setIsOpen(true);
     if (api_key !== "" && agent_id !== "") {
@@ -792,29 +791,6 @@ var SpemaiChatSdk = function SpemaiChatSdk(props) {
   var closeChat = function closeChat() {
     setIsOpen(false);
   };
-  //  const createChatSession = async()=>{
-  //   const url = "https://api-cai-dev.spemai.com/api/v1/sdk/session/";
-  //   const headers = {
-  //     "x-api-key": "LJn_mkBriEStcCMrb7XjL-7bx_OSXBZQuPAE4Ak1IwE",
-  //     "Content-Type": "application/json",
-  //     // Authorization: `Bearer ${token}`,
-
-  //   };
-  //   const data ={
-  //     "client_id":1,
-  //     "client_name":"Dinal Fernando",
-  //     "agent_id":"cedfb2be-e8c8-43c7-89e8-6f730482749b"
-  // }
-  //   // Simulated API call or WebSocket to send the message
-  //   try {
-  //     const response = await axios.post(url, data, { headers });
-  //     console.log('Response:', response.data);
-  //   } catch (error) {
-  //     console.error('Error fetching data:', error);
-  //     console.log(axios);
-  //   }
-
-  //  }
   var createChatSession = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
       var xhr, url, data;
@@ -822,7 +798,7 @@ var SpemaiChatSdk = function SpemaiChatSdk(props) {
         while (1) switch (_context.prev = _context.next) {
           case 0:
             xhr = new XMLHttpRequest();
-            url = baseUrl + "api/v1/sdk/session/";
+            url = "https://api-cai-dev.spemai.com/api/v1/sdk/session/";
             xhr.open("POST", url, true);
             xhr.setRequestHeader("Content-Type", "application/json");
             xhr.setRequestHeader("x-api-key", api_key);

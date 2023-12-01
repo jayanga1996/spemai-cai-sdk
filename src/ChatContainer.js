@@ -109,7 +109,7 @@ const ChatContainer = (props) => {
     const newMessage = { text: message, user: currentUser };
     setMessages((prevMsg) =>[...prevMsg, newMessage]);
     var xhr = new XMLHttpRequest();
-    var url = baseUrl+"api/v1/sdk/chat/";
+    var url = "https://api-cai-dev.spemai.com/api/v1/sdk/chat/";
 
     xhr.open("POST", url, true);
     xhr.setRequestHeader("Content-Type", "application/json");
