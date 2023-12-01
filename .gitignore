@@ -398,7 +398,3 @@ FodyWeavers.xsd
 *.sln.iml
 
 # .env files
-.env.local
-.env.development
-.env.test
-.env.production
