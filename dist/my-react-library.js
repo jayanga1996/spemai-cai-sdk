@@ -523,6 +523,8 @@ var SendMessageForm = function SendMessageForm(_ref) {
       border: '1px solid #EBEBEB',
       background: '#F4F4F4',
       display: 'flex',
+      fontSize: '12px',
+      fontStyle: 'normal',
       justifyContent: 'space-between',
       alignItems: 'center',
       padding: '5px',
