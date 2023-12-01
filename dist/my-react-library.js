@@ -484,6 +484,15 @@ var MessageList = function MessageList(_ref) {
       marginBottom: '5px'
     }
   };
+  var formatDateString = function formatDateString(inputDate) {
+    var date = new Date(inputDate);
+    var hours = date.getHours();
+    var minutes = date.getMinutes();
+    var amOrPm = hours >= 12 ? "PM" : "AM";
+    var formattedHours = hours % 12 === 0 ? 12 : hours % 12;
+    var formattedMinutes = minutes < 10 ? "0".concat(minutes) : minutes;
+    return "".concat(formattedHours, ".").concat(formattedMinutes, " ").concat(amOrPm);
+  };
   return /*#__PURE__*/React.createElement('div', null, messages.map(function (message, index) {
     return message.user === currentUser ? ( /*#__PURE__*/React.createElement('div', {
       style: messageListStyles.rightDiv,
@@ -492,14 +501,14 @@ var MessageList = function MessageList(_ref) {
       style: messageListStyles.rightSideChat
     }, message.text), /*#__PURE__*/React.createElement('div', {
       style: messageListStyles.messageTimeText
-    }, '3.22 PM'))) : ( /*#__PURE__*/React.createElement('div', {
+    }, formatDateString(Date.now())))) : ( /*#__PURE__*/React.createElement('div', {
       style: messageListStyles.leftDiv,
       key: index
     }, /*#__PURE__*/React.createElement('div', {
       style: messageListStyles.leftSideChat
     }, message.text), /*#__PURE__*/React.createElement('div', {
       style: messageListStyles.messageTimeText
-    }, '3.22 PM')));
+    }, formatDateString(Date.now()))));
   }));
 };
 

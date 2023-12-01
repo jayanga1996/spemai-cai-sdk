@@ -56,6 +56,7 @@ const ChatContainer = (props) => {
     },
   };
 
+
   useEffect(() => {
     // if(sessionId !== ""){
     //   const initMsg ={ text: "Hi, How can I help you?", user: "User123" };

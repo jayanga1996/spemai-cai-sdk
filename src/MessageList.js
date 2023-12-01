@@ -81,6 +81,17 @@ const MessageList = ({ messages, currentUser }) => {
       marginBottom: '5px',
     },
   };
+
+  const formatDateString = (inputDate) => {
+    const date = new Date(inputDate);
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
+    const amOrPm = hours >= 12 ? "PM" : "AM";
+    const formattedHours = hours % 12 === 0 ? 12 : hours % 12;
+    const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
+
+    return `${formattedHours}.${formattedMinutes} ${amOrPm}`;
+  };
   
   return React.createElement(
     'div',
@@ -91,14 +102,14 @@ const MessageList = ({ messages, currentUser }) => {
           'div',
           { style: messageListStyles.rightDiv ,key: index },
           React.createElement('div', { style: messageListStyles.rightSideChat }, message.text),
-          React.createElement('div', { style: messageListStyles.messageTimeText}, '3.22 PM')
+          React.createElement('div', { style: messageListStyles.messageTimeText}, formatDateString(Date.now()))
         )
       ) : (
         React.createElement(
           'div',
           { style: messageListStyles.leftDiv , key: index },
           React.createElement('div', { style: messageListStyles.leftSideChat}, message.text),
-          React.createElement('div', { style: messageListStyles.messageTimeText }, '3.22 PM')
+          React.createElement('div', { style: messageListStyles.messageTimeText },formatDateString(Date.now()))
         )
       )
     )
