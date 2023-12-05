@@ -6,7 +6,7 @@ import "./style.css";
 import ChatContainer from "./ChatContainer";
 
 const SpemaiChatSdk = (props) => {
-  const { api_key, agent_id, client_id, client_name,env , chat_name } = props;
+  const { api_key, agent_id, client_id, client_name,env_type , chat_name } = props;
   const [isOpen, setIsOpen] = useState(false);
   const [sessionId, setSessionId] = useState("");
   const [baseUrl, setBaseUrl] = useState("");
@@ -59,9 +59,9 @@ const createChatSession = async () => {
 };
 
   useEffect(()=>{
-    if (env === "DEV") {
+    if (env_type === "DEV") {
       setBaseUrl("https://api-cai-dev.spemai.com/api/v1/sdk/session/") ;
-    } else if (env === "UAT") {
+    } else if (env_type === "UAT") {
       setBaseUrl("https://api-cai-uat.spemai.com/api/v1/sdk/session/");
     } else {
       setBaseUrl("https://api-cai-live.spemai.com/api/v1/sdk/session/");
@@ -126,7 +126,7 @@ const createChatSession = async () => {
       { style: styles.chatWindow },
       React.createElement(
         ChatContainer,
-        {api_key, agent_id, client_id, client_name,env,chat_name,sessionId},
+        {api_key, agent_id, client_id, client_name,env_type ,chat_name,sessionId},
       )
     )
   );

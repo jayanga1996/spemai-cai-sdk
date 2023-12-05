@@ -590,7 +590,7 @@ var ChatContainer = function ChatContainer(props) {
     agent_id = props.agent_id,
     client_id = props.client_id;
     props.client_name;
-    var env = props.env,
+    var env_type = props.env_type,
     chat_name = props.chat_name,
     sessionId = props.sessionId;
   var _useState = React.useState([]),
@@ -627,7 +627,7 @@ var ChatContainer = function ChatContainer(props) {
     },
     chatContainerFooter: {
       borderTop: "1px solid #F0F0F0",
-      padding: "20px",
+      padding: "15px",
       height: "10vh"
     },
     chatTopicText: {
@@ -657,9 +657,9 @@ var ChatContainer = function ChatContainer(props) {
     //   { text: "Hi, How can I help you?", user: "Merchant" },
     //  ];
     // setMessages(initialMessages);
-    if (env === "DEV") {
+    if (env_type === "DEV") {
       setBaseUrl("https://api-cai-dev.spemai.com/api/v1/sdk/chat/");
-    } else if (env === "UAT") {
+    } else if (env_type === "UAT") {
       setBaseUrl("https://api-cai-uat.spemai.com/api/v1/sdk/chat/");
     } else {
       setBaseUrl("https://api-cai-live.spemai.com/api/v1/sdk/chat/");
@@ -761,7 +761,7 @@ var SpemaiChatSdk = function SpemaiChatSdk(props) {
     agent_id = props.agent_id,
     client_id = props.client_id,
     client_name = props.client_name,
-    env = props.env,
+    env_type = props.env_type,
     chat_name = props.chat_name;
   var _useState = React.useState(false),
     _useState2 = _slicedToArray(_useState, 2),
@@ -826,9 +826,9 @@ var SpemaiChatSdk = function SpemaiChatSdk(props) {
     };
   }();
   React.useEffect(function () {
-    if (env === "DEV") {
+    if (env_type === "DEV") {
       setBaseUrl("https://api-cai-dev.spemai.com/api/v1/sdk/session/");
-    } else if (env === "UAT") {
+    } else if (env_type === "UAT") {
       setBaseUrl("https://api-cai-uat.spemai.com/api/v1/sdk/session/");
     } else {
       setBaseUrl("https://api-cai-live.spemai.com/api/v1/sdk/session/");
@@ -908,7 +908,7 @@ var SpemaiChatSdk = function SpemaiChatSdk(props) {
     agent_id: agent_id,
     client_id: client_id,
     client_name: client_name,
-    env: env,
+    env_type: env_type,
     chat_name: chat_name,
     sessionId: sessionId
   })));
@@ -921,14 +921,14 @@ var SpemaiCaiSdk = function SpemaiCaiSdk(_ref) {
     agent_id = data.agent_id,
     client_id = data.client_id,
     client_name = data.client_name,
-    env = data.env,
+    env_type = data.env_type,
     chat_name = data.chat_name;
   return /*#__PURE__*/React.createElement(SpemaiChatSdk, {
     api_key: api_key,
     agent_id: agent_id,
     client_id: client_id,
     client_name: client_name,
-    env: env,
+    env_type: env_type,
     chat_name: chat_name
   });
 };

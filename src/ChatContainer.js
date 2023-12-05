@@ -8,7 +8,7 @@ import arrow_left from "./images/arrow-left-s-line.png";
 
 const ChatContainer = (props) => {
   //const baseUrl = process.env.DEV_BASE_URL;
-  const { api_key, agent_id, client_id, client_name,env , chat_name,sessionId } = props;
+  const { api_key, agent_id, client_id, client_name,env_type, chat_name,sessionId } = props;
   const [messages, setMessages] = useState([]);
   const [baseUrl, setBaseUrl] = useState("");
   const currentUser = "User123"; // Simulated current user
@@ -68,9 +68,9 @@ const ChatContainer = (props) => {
     //   { text: "Hi, How can I help you?", user: "Merchant" },
     //  ];
     // setMessages(initialMessages);
-    if (env === "DEV") {
+    if (env_type === "DEV") {
       setBaseUrl("https://api-cai-dev.spemai.com/api/v1/sdk/chat/") ;
-    } else if (env === "UAT") {
+    } else if (env_type === "UAT") {
       setBaseUrl("https://api-cai-uat.spemai.com/api/v1/sdk/chat/");
     } else {
       setBaseUrl("https://api-cai-live.spemai.com/api/v1/sdk/chat/");
