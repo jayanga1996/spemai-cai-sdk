@@ -15,7 +15,7 @@ const ChatContainer = (props) => {
   const chatContainerStyles = {
     chatContainer: {
       width: "25vw",
-      height: "70vh",
+      height: "100%",
       flexShrink: 0,
       fontFamily: "Arial, sans-serif",
       /* Additional properties can be added here */
@@ -24,7 +24,7 @@ const ChatContainer = (props) => {
       display: "flex",
       justifyContent: "space-between",
       alignItems: "center",
-      height: "9vh",
+      height: "20%",
       width: "100%",
       borderBottom: "1px solid #F0F0F0",
       padding: "20px",
@@ -32,12 +32,12 @@ const ChatContainer = (props) => {
     chatContainerBody: {
       padding: "20px",
       overflowY: "scroll",
-      height: "50vh",
+      height: "60%",
     },
     chatContainerFooter: {
       borderTop: "1px solid #F0F0F0",
       padding: "15px",
-      height: "10vh",
+      height: "18%",
     },
     chatTopicText: {
       color: "#000",
