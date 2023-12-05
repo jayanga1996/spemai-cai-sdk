@@ -3,7 +3,7 @@ import React from "react";
 const MessageList = ({ messages, currentUser }) => {
   const messageListStyles = {
     mainDiv:{
-      display: 'flex',
+      display:"flex",
       flexDirection:"column-reverse"
     },
     messageList: {
@@ -30,8 +30,8 @@ const MessageList = ({ messages, currentUser }) => {
     leftDiv: {
       display: 'flex',
       flexDirection: 'column',
-      justifyContent: 'end',
-      alignItems: 'end',
+      justifyContent: 'start',
+      alignItems: 'start',
       marginTop: '10px',
       marginBottom: '10px',
     },
@@ -55,7 +55,7 @@ const MessageList = ({ messages, currentUser }) => {
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'end',
-      alignItems: 'start',
+      alignItems: 'end',
       marginTop: '10px',
       marginBottom: '10px',
     },

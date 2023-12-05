@@ -406,7 +406,7 @@ var MessageList = function MessageList(_ref) {
     currentUser = _ref.currentUser;
   var messageListStyles = {
     mainDiv: {
-      display: 'flex',
+      display: "flex",
       flexDirection: "column-reverse"
     },
     messageList: {
@@ -433,8 +433,8 @@ var MessageList = function MessageList(_ref) {
     leftDiv: {
       display: 'flex',
       flexDirection: 'column',
-      justifyContent: 'end',
-      alignItems: 'end',
+      justifyContent: 'start',
+      alignItems: 'start',
       marginTop: '10px',
       marginBottom: '10px'
     },
@@ -458,7 +458,7 @@ var MessageList = function MessageList(_ref) {
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'end',
-      alignItems: 'start',
+      alignItems: 'end',
       marginTop: '10px',
       marginBottom: '10px'
     },
