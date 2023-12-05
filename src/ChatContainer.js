@@ -36,7 +36,7 @@ const ChatContainer = (props) => {
     },
     chatContainerFooter: {
       borderTop: "1px solid #F0F0F0",
-      padding: "20px",
+      padding: "15px",
       height: "10vh",
     },
     chatTopicText: {
