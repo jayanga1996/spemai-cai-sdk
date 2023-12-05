@@ -3,8 +3,7 @@ import React from "react";
 const MessageList = ({ messages, currentUser }) => {
   const messageListStyles = {
     mainDiv:{
-      display:"flex",
-      flexDirection:"column-reverse"
+      bottom:"0"
     },
     messageList: {
       width: '264px',

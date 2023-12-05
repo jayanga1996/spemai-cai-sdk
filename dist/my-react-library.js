@@ -406,8 +406,7 @@ var MessageList = function MessageList(_ref) {
     currentUser = _ref.currentUser;
   var messageListStyles = {
     mainDiv: {
-      display: "flex",
-      flexDirection: "column-reverse"
+      bottom: "0"
     },
     messageList: {
       width: '264px',
