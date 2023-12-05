@@ -126,7 +126,7 @@ const createChatSession = async () => {
       { style: styles.chatWindow },
       React.createElement(
         ChatContainer,
-        {api_key, agent_id, client_id, client_name,env , chat_name,sessionId},
+        {api_key, agent_id, client_id, client_name,env,chat_name,sessionId},
       )
     )
   );
