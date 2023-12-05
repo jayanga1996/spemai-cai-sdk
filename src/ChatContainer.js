@@ -10,12 +10,12 @@ const ChatContainer = (props) => {
   //const baseUrl = process.env.DEV_BASE_URL;
   const { api_key, agent_id, client_id, client_name,env_type, chat_name,sessionId } = props;
   const [messages, setMessages] = useState([]);
-  const [baseUrl, setBaseUrl] = useState("https://api-cai-dev.spemai.com/api/v1/sdk/chat/");
+  const [baseUrl, setBaseUrl] = useState("");
   const currentUser = "User123"; // Simulated current user
   const chatContainerStyles = {
     chatContainer: {
       width: "25vw",
-      height: "100%",
+      height: "70vh",
       flexShrink: 0,
       fontFamily: "Arial, sans-serif",
       /* Additional properties can be added here */
@@ -68,13 +68,13 @@ const ChatContainer = (props) => {
     //   { text: "Hi, How can I help you?", user: "Merchant" },
     //  ];
     // setMessages(initialMessages);
-    // if (env_type === "DEV") {
-    //   setBaseUrl("https://api-cai-dev.spemai.com/api/v1/sdk/chat/") ;
-    // } else if (env_type === "UAT") {
-    //   setBaseUrl("https://api-cai-uat.spemai.com/api/v1/sdk/chat/");
-    // } else {
-    //   setBaseUrl("https://api-cai-live.spemai.com/api/v1/sdk/chat/");
-    // }
+    if (env_type === "DEV") {
+      setBaseUrl("https://api-cai-dev.spemai.com/api/v1/sdk/chat/") ;
+    } else if (env_type === "UAT") {
+      setBaseUrl("https://api-cai-uat.spemai.com/api/v1/sdk/chat/");
+    } else {
+      setBaseUrl("https://api-cai-live.spemai.com/api/v1/sdk/chat/");
+    }
   }, []);
 
   

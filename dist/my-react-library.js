@@ -590,22 +590,22 @@ var ChatContainer = function ChatContainer(props) {
     agent_id = props.agent_id,
     client_id = props.client_id;
     props.client_name;
-    props.env_type;
-    var chat_name = props.chat_name,
+    var env_type = props.env_type,
+    chat_name = props.chat_name,
     sessionId = props.sessionId;
   var _useState = React.useState([]),
     _useState2 = _slicedToArray(_useState, 2),
     messages = _useState2[0],
     setMessages = _useState2[1];
-  var _useState3 = React.useState("https://api-cai-dev.spemai.com/api/v1/sdk/chat/"),
+  var _useState3 = React.useState(""),
     _useState4 = _slicedToArray(_useState3, 2),
-    baseUrl = _useState4[0];
-    _useState4[1];
+    baseUrl = _useState4[0],
+    setBaseUrl = _useState4[1];
   var currentUser = "User123"; // Simulated current user
   var chatContainerStyles = {
     chatContainer: {
       width: "25vw",
-      height: "100%",
+      height: "70vh",
       flexShrink: 0,
       fontFamily: "Arial, sans-serif"
       /* Additional properties can be added here */
@@ -657,13 +657,13 @@ var ChatContainer = function ChatContainer(props) {
     //   { text: "Hi, How can I help you?", user: "Merchant" },
     //  ];
     // setMessages(initialMessages);
-    // if (env_type === "DEV") {
-    //   setBaseUrl("https://api-cai-dev.spemai.com/api/v1/sdk/chat/") ;
-    // } else if (env_type === "UAT") {
-    //   setBaseUrl("https://api-cai-uat.spemai.com/api/v1/sdk/chat/");
-    // } else {
-    //   setBaseUrl("https://api-cai-live.spemai.com/api/v1/sdk/chat/");
-    // }
+    if (env_type === "DEV") {
+      setBaseUrl("https://api-cai-dev.spemai.com/api/v1/sdk/chat/");
+    } else if (env_type === "UAT") {
+      setBaseUrl("https://api-cai-uat.spemai.com/api/v1/sdk/chat/");
+    } else {
+      setBaseUrl("https://api-cai-live.spemai.com/api/v1/sdk/chat/");
+    }
   }, []);
   var sendMessage = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(message) {
@@ -767,14 +767,14 @@ var SpemaiChatSdk = function SpemaiChatSdk(props) {
     _useState2 = _slicedToArray(_useState, 2),
     isOpen = _useState2[0],
     setIsOpen = _useState2[1];
-  var _useState3 = React.useState("https://api-cai-dev.spemai.com/api/v1/sdk/session/"),
+  var _useState3 = React.useState(""),
     _useState4 = _slicedToArray(_useState3, 2),
     sessionId = _useState4[0],
     setSessionId = _useState4[1];
   var _useState5 = React.useState(""),
     _useState6 = _slicedToArray(_useState5, 2),
-    baseUrl = _useState6[0];
-    _useState6[1];
+    baseUrl = _useState6[0],
+    setBaseUrl = _useState6[1];
   var openChat = function openChat() {
     setIsOpen(true);
     if (api_key !== "" && agent_id !== "") {
@@ -826,13 +826,13 @@ var SpemaiChatSdk = function SpemaiChatSdk(props) {
     };
   }();
   React.useEffect(function () {
-    // if (env_type === "DEV") {
-    //   setBaseUrl("https://api-cai-dev.spemai.com/api/v1/sdk/session/") ;
-    // } else if (env_type === "UAT") {
-    //   setBaseUrl("https://api-cai-uat.spemai.com/api/v1/sdk/session/");
-    // } else {
-    //   setBaseUrl("https://api-cai-live.spemai.com/api/v1/sdk/session/");
-    // }
+    if (env_type === "DEV") {
+      setBaseUrl("https://api-cai-dev.spemai.com/api/v1/sdk/session/");
+    } else if (env_type === "UAT") {
+      setBaseUrl("https://api-cai-uat.spemai.com/api/v1/sdk/session/");
+    } else {
+      setBaseUrl("https://api-cai-live.spemai.com/api/v1/sdk/session/");
+    }
     //createChatSession()
   }, []);
 
