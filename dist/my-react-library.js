@@ -653,11 +653,10 @@ var ChatContainer = function ChatContainer(props) {
     //   setMessages(initMsg);
     // }
     // Simulated messages from an API call or WebSocket
-    var initialMessages = [{
-      text: "Hi, How can I help you?",
-      user: "Merchant"
-    }];
-    setMessages(initialMessages);
+    // const initialMessages = [
+    //   { text: "Hi, How can I help you?", user: "Merchant" },
+    //  ];
+    // setMessages(initialMessages);
     if (env === "DEV") {
       setBaseUrl("https://api-cai-dev.spemai.com/api/v1/sdk/chat/");
     } else if (env === "UAT") {
