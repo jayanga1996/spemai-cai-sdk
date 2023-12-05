@@ -590,7 +590,8 @@ var ChatContainer = function ChatContainer(props) {
     agent_id = props.agent_id,
     client_id = props.client_id;
     props.client_name;
-    var chat_name = props.chat_name,
+    var env = props.env,
+    chat_name = props.chat_name,
     sessionId = props.sessionId;
   var _useState = React.useState([]),
     _useState2 = _slicedToArray(_useState, 2),

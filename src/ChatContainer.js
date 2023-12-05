@@ -8,7 +8,7 @@ import arrow_left from "./images/arrow-left-s-line.png";
 
 const ChatContainer = (props) => {
   //const baseUrl = process.env.DEV_BASE_URL;
-  const { api_key, agent_id, client_id, client_name, chat_name,sessionId } = props;
+  const { api_key, agent_id, client_id, client_name,env , chat_name,sessionId } = props;
   const [messages, setMessages] = useState([]);
   const [baseUrl, setBaseUrl] = useState("");
   const currentUser = "User123"; // Simulated current user
