@@ -6,7 +6,7 @@ import "./style.css";
 import ChatContainer from "./ChatContainer";
 
 const SpemaiChatSdk = (props) => {
-  const { api_key, agent_id, client_id, client_name, chat_name } = props;
+  const { api_key, agent_id, client_id, client_name,env , chat_name } = props;
   const [isOpen, setIsOpen] = useState(false);
   const [sessionId, setSessionId] = useState("");
   const text = "Hello from MyComponent!";
@@ -27,7 +27,15 @@ const SpemaiChatSdk = (props) => {
 
 const createChatSession = async () => {
   const xhr = new XMLHttpRequest();
-  const url = "https://api-cai-dev.spemai.com/api/v1/sdk/session/";
+  const url="";
+  if(env ==="DEV"){
+    url = "https://api-cai-dev.spemai.com/api/v1/sdk/session/";
+  }else if(env==="UAT"){
+    url = "https://api-cai-uat.spemai.com/api/v1/sdk/session/";
+  }else{
+    url = "https://api-cai-live.spemai.com/api/v1/sdk/session/";
+  }
+  
   
   xhr.open("POST", url, true);
   xhr.setRequestHeader("Content-Type", "application/json");
@@ -119,7 +127,7 @@ const createChatSession = async () => {
       { style: styles.chatWindow },
       React.createElement(
         ChatContainer,
-        {api_key, agent_id, client_id, client_name, chat_name,sessionId},
+        {api_key, agent_id, client_id, client_name,env , chat_name,sessionId},
       )
     )
   );

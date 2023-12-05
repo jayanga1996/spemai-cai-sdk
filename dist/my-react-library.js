@@ -360,6 +360,9 @@ function _asyncToGenerator(fn) {
     });
   };
 }
+function _readOnlyError(name) {
+  throw new TypeError("\"" + name + "\" is read-only");
+}
 function _slicedToArray(arr, i) {
   return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
 }
@@ -668,7 +671,14 @@ var ChatContainer = function ChatContainer(props) {
               return [].concat(_toConsumableArray(prevMsg), [newMessage]);
             });
             xhr = new XMLHttpRequest();
-            url = "https://api-cai-dev.spemai.com/api/v1/sdk/chat/";
+            url = "";
+            if (env === "DEV") {
+              _readOnlyError("url");
+            } else if (env === "UAT") {
+              _readOnlyError("url");
+            } else {
+              _readOnlyError("url");
+            }
             xhr.open("POST", url, true);
             xhr.setRequestHeader("Content-Type", "application/json");
             xhr.setRequestHeader("x-api-key", api_key);
@@ -694,7 +704,7 @@ var ChatContainer = function ChatContainer(props) {
                   console.error("Error:", xhr.status, xhr.statusText);
                   // Handle error response here
                   var errorMessage = {
-                    text: 'Error fetching data:',
+                    text: "Error fetching data:",
                     user: "OtherUser"
                   };
                   setMessages(function (prevMsg) {
@@ -710,7 +720,7 @@ var ChatContainer = function ChatContainer(props) {
               message: message
             });
             xhr.send(send_data);
-          case 10:
+          case 11:
           case "end":
             return _context.stop();
         }
@@ -751,6 +761,7 @@ var SpemaiChatSdk = function SpemaiChatSdk(props) {
     agent_id = props.agent_id,
     client_id = props.client_id,
     client_name = props.client_name,
+    env = props.env,
     chat_name = props.chat_name;
   var _useState = React.useState(false),
     _useState2 = _slicedToArray(_useState, 2),
@@ -776,7 +787,14 @@ var SpemaiChatSdk = function SpemaiChatSdk(props) {
         while (1) switch (_context.prev = _context.next) {
           case 0:
             xhr = new XMLHttpRequest();
-            url = "https://api-cai-dev.spemai.com/api/v1/sdk/session/";
+            url = "";
+            if (env === "DEV") {
+              _readOnlyError("url");
+            } else if (env === "UAT") {
+              _readOnlyError("url");
+            } else {
+              _readOnlyError("url");
+            }
             xhr.open("POST", url, true);
             xhr.setRequestHeader("Content-Type", "application/json");
             xhr.setRequestHeader("x-api-key", api_key);
@@ -801,7 +819,7 @@ var SpemaiChatSdk = function SpemaiChatSdk(props) {
               "agent_id": agent_id
             });
             xhr.send(data);
-          case 8:
+          case 9:
           case "end":
             return _context.stop();
         }
@@ -887,6 +905,7 @@ var SpemaiChatSdk = function SpemaiChatSdk(props) {
     agent_id: agent_id,
     client_id: client_id,
     client_name: client_name,
+    env: env,
     chat_name: chat_name,
     sessionId: sessionId
   })));
@@ -899,12 +918,14 @@ var SpemaiCaiSdk = function SpemaiCaiSdk(_ref) {
     agent_id = data.agent_id,
     client_id = data.client_id,
     client_name = data.client_name,
+    env = data.env,
     chat_name = data.chat_name;
   return /*#__PURE__*/React.createElement(SpemaiChatSdk, {
     api_key: api_key,
     agent_id: agent_id,
     client_id: client_id,
     client_name: client_name,
+    env: env,
     chat_name: chat_name
   });
 };
