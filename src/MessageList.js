@@ -2,6 +2,10 @@ import React from "react";
 
 const MessageList = ({ messages, currentUser }) => {
   const messageListStyles = {
+    mainDiv:{
+      display:"flex",
+      flexDirection:"column-reverse"
+    },
     messageList: {
       width: '264px',
       height: '232px',
@@ -95,7 +99,7 @@ const MessageList = ({ messages, currentUser }) => {
   
   return React.createElement(
     'div',
-    null,
+    {style:messageListStyles.mainDiv},
     messages.map((message, index) =>
       message.user === currentUser ? (
         React.createElement(
