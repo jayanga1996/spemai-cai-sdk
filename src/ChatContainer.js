@@ -5,11 +5,12 @@ import SendMessageForm from "./SendMessageForm";
 import full_exit from "./images/fullscreen-exit-fill.png";
 import arrow_left from "./images/arrow-left-s-line.png";
 
+
 const ChatContainer = (props) => {
-  const baseUrl = process.env.DEV_BASE_URL;
-  const { api_key, agent_id, client_id, client_name, chat_name, sessionId } =
-    props;
+  //const baseUrl = process.env.DEV_BASE_URL;
+  const { api_key, agent_id, client_id, client_name, chat_name,sessionId } = props;
   const [messages, setMessages] = useState([]);
+  const [baseUrl, setBaseUrl] = useState("");
   const currentUser = "User123"; // Simulated current user
   const chatContainerStyles = {
     chatContainer: {
@@ -56,6 +57,7 @@ const ChatContainer = (props) => {
     },
   };
 
+
   useEffect(() => {
     // if(sessionId !== ""){
     //   const initMsg ={ text: "Hi, How can I help you?", user: "User123" };
@@ -64,32 +66,36 @@ const ChatContainer = (props) => {
     // Simulated messages from an API call or WebSocket
     const initialMessages = [
       { text: "Hi, How can I help you?", user: "Merchant" },
-    ];
+     ];
     setMessages(initialMessages);
+    if (env === "DEV") {
+      setBaseUrl("https://api-cai-dev.spemai.com/api/v1/sdk/chat/") ;
+    } else if (env === "UAT") {
+      setBaseUrl("https://api-cai-uat.spemai.com/api/v1/sdk/chat/");
+    } else {
+      setBaseUrl("https://api-cai-live.spemai.com/api/v1/sdk/chat/");
+    }
   }, []);
 
+  
   const sendMessage = async (message) => {
     const newMessage = { text: message, user: currentUser };
-    setMessages((prevMsg) => [...prevMsg, newMessage]);
+    setMessages((prevMsg) =>[...prevMsg, newMessage]);
     var xhr = new XMLHttpRequest();
-    const url = "";
-    if (env === "DEV") {
-      url = "https://api-cai-dev.spemai.com/api/v1/sdk/session/";
-    } else if (env === "UAT") {
-      url = "https://api-cai-uat.spemai.com/api/v1/sdk/session/";
-    } else {
-      url = "https://api-cai-live.spemai.com/api/v1/sdk/session/";
-    }
+    
 
-    xhr.open("POST", url, true);
+    xhr.open("POST", baseUrl, true);
     xhr.setRequestHeader("Content-Type", "application/json");
-    xhr.setRequestHeader("x-api-key", api_key);
+    xhr.setRequestHeader(
+      "x-api-key",
+      api_key
+    );
 
     xhr.onreadystatechange = function () {
       if (xhr.readyState === XMLHttpRequest.DONE) {
         if (xhr.status === 200) {
           const responseObj = JSON.parse(xhr.responseText); // Parse the JSON response
-          const responseMsg = responseObj?.data?.response_msg;
+        const responseMsg = responseObj?.data?.response_msg; 
           console.log("Response status:", responseObj.status);
           console.log("Response message:", responseMsg);
           if (responseObj.status === 100) {
@@ -97,17 +103,14 @@ const ChatContainer = (props) => {
               text: responseMsg,
               user: "OtherUser",
             };
-            setMessages((prevMsg) => [...prevMsg, responseMessage]);
+            setMessages((prevMsg) =>[...prevMsg, responseMessage]);
           }
           // Handle successful response here
         } else {
           console.error("Error:", xhr.status, xhr.statusText);
           // Handle error response here
-          const errorMessage = {
-            text: "Error fetching data:",
-            user: "OtherUser",
-          };
-          setMessages((prevMsg) => [...prevMsg, errorMessage]);
+            const errorMessage = { text: 'Error fetching data:', user: "OtherUser" };
+      setMessages((prevMsg) =>[...prevMsg, errorMessage]);
         }
       }
     };

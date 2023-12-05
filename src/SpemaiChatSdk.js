@@ -9,6 +9,7 @@ const SpemaiChatSdk = (props) => {
   const { api_key, agent_id, client_id, client_name,env , chat_name } = props;
   const [isOpen, setIsOpen] = useState(false);
   const [sessionId, setSessionId] = useState("");
+  const [baseUrl, setBaseUrl] = useState("");
   const text = "Hello from MyComponent!";
   //const baseUrl = process.env.DEV_BASE_URL;
 
@@ -27,17 +28,8 @@ const SpemaiChatSdk = (props) => {
 
 const createChatSession = async () => {
   const xhr = new XMLHttpRequest();
-  const url="";
-  if(env ==="DEV"){
-    url = "https://api-cai-dev.spemai.com/api/v1/sdk/session/";
-  }else if(env==="UAT"){
-    url = "https://api-cai-uat.spemai.com/api/v1/sdk/session/";
-  }else{
-    url = "https://api-cai-live.spemai.com/api/v1/sdk/session/";
-  }
   
-  
-  xhr.open("POST", url, true);
+  xhr.open("POST", baseUrl, true);
   xhr.setRequestHeader("Content-Type", "application/json");
   xhr.setRequestHeader("x-api-key", api_key);
 
@@ -67,6 +59,13 @@ const createChatSession = async () => {
 };
 
   useEffect(()=>{
+    if (env === "DEV") {
+      setBaseUrl("https://api-cai-dev.spemai.com/api/v1/sdk/session/") ;
+    } else if (env === "UAT") {
+      setBaseUrl("https://api-cai-uat.spemai.com/api/v1/sdk/session/");
+    } else {
+      setBaseUrl("https://api-cai-live.spemai.com/api/v1/sdk/session/");
+    }
     //createChatSession()
   },[])
 
