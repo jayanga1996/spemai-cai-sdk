@@ -615,7 +615,7 @@ var ChatContainer = function ChatContainer(props) {
       display: "flex",
       justifyContent: "space-between",
       alignItems: "center",
-      height: "20%",
+      height: "9vh",
       width: "100%",
       borderBottom: "1px solid #F0F0F0",
       padding: "20px"
@@ -623,12 +623,12 @@ var ChatContainer = function ChatContainer(props) {
     chatContainerBody: {
       padding: "20px",
       overflowY: "scroll",
-      height: "60%"
+      height: "50vh"
     },
     chatContainerFooter: {
       borderTop: "1px solid #F0F0F0",
       padding: "15px",
-      height: "18%"
+      height: "10vh"
     },
     chatTopicText: {
       color: "#000",
