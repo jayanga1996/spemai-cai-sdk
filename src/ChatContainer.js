@@ -33,6 +33,8 @@ const ChatContainer = (props) => {
       padding: "20px",
       overflowY: "scroll",
       height: "50vh",
+        display:"flex",
+        flexDirection:"column-reverse"
     },
     chatContainerFooter: {
       borderTop: "1px solid #F0F0F0",

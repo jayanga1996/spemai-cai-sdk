@@ -405,10 +405,6 @@ var MessageList = function MessageList(_ref) {
   var messages = _ref.messages,
     currentUser = _ref.currentUser;
   var messageListStyles = {
-    mainDiv: {
-      display: "flex",
-      flexDirection: "column-reverse"
-    },
     messageList: {
       width: '264px',
       height: '232px',
@@ -497,9 +493,7 @@ var MessageList = function MessageList(_ref) {
     var formattedMinutes = minutes < 10 ? "0".concat(minutes) : minutes;
     return "".concat(formattedHours, ".").concat(formattedMinutes, " ").concat(amOrPm);
   };
-  return /*#__PURE__*/React.createElement('div', {
-    style: messageListStyles.mainDiv
-  }, messages.map(function (message, index) {
+  return /*#__PURE__*/React.createElement('div', null, messages.map(function (message, index) {
     return message.user === currentUser ? ( /*#__PURE__*/React.createElement('div', {
       style: messageListStyles.rightDiv,
       key: index
@@ -629,7 +623,9 @@ var ChatContainer = function ChatContainer(props) {
     chatContainerBody: {
       padding: "20px",
       overflowY: "scroll",
-      height: "50vh"
+      height: "50vh",
+      display: "flex",
+      flexDirection: "column-reverse"
     },
     chatContainerFooter: {
       borderTop: "1px solid #F0F0F0",
