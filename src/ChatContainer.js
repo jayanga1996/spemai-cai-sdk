@@ -24,7 +24,7 @@ const ChatContainer = (props) => {
       display: "flex",
       justifyContent: "space-between",
       alignItems: "center",
-      height: "70px",
+      height: "60px",
       width: "360px",
       borderBottom: "1px solid #F0F0F0",
       padding: "20px",
@@ -32,14 +32,14 @@ const ChatContainer = (props) => {
     chatContainerBody: {
       padding: "20px",
       overflowY: "scroll",
-      height: "430px",
+      height: "400px",
         display:"flex",
         flexDirection:"column-reverse"
     },
     chatContainerFooter: {
       borderTop: "1px solid #F0F0F0",
       padding: "15px",
-      height: "80px",
+      height: "70px",
     },
     chatTopicText: {
       color: "#000",
