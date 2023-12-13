@@ -14,8 +14,8 @@ const ChatContainer = (props) => {
   const currentUser = "User123"; // Simulated current user
   const chatContainerStyles = {
     chatContainer: {
-      width: "25vw",
-      height: "70vh",
+      width: "360px",
+      height: "700px",
       flexShrink: 0,
       fontFamily: "Arial, sans-serif",
       /* Additional properties can be added here */
@@ -24,7 +24,7 @@ const ChatContainer = (props) => {
       display: "flex",
       justifyContent: "space-between",
       alignItems: "center",
-      height: "9vh",
+      height: "90px",
       width: "100%",
       borderBottom: "1px solid #F0F0F0",
       padding: "20px",
@@ -32,14 +32,14 @@ const ChatContainer = (props) => {
     chatContainerBody: {
       padding: "20px",
       overflowY: "scroll",
-      height: "50vh",
+      height: "500px",
         display:"flex",
         flexDirection:"column-reverse"
     },
     chatContainerFooter: {
       borderTop: "1px solid #F0F0F0",
       padding: "15px",
-      height: "10vh",
+      height: "100px",
     },
     chatTopicText: {
       color: "#000",
